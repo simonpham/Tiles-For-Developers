@@ -9,6 +9,7 @@ import eu.chainfire.libsuperuser.Shell
  * Email: simonpham.dn@gmail.com
  */
 
+// TODO: let user customize Demo mode
 class DemoModeService : TileService() {
 
     override fun onTileAdded() {
