@@ -44,5 +44,17 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".tiles.ForceRtlLayoutService"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/tile_icon_force_rtl"
+            android:label="@string/tile_force_rtl_layout"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
     </application>
 </manifest>
