@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Tiles for Developers</string>
+
+    <string name="tile_demo_mode">Demo mode</string>
 </resources>
