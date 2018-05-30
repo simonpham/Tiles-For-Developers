@@ -22,4 +22,26 @@ class DemoModeService : TileService() {
 
         qsTile.updateTile()
     }
+
+    override fun onClick() {
+        super.onClick()
+
+        if (qsTile.state == Tile.STATE_INACTIVE) {
+            qsTile.state = Tile.STATE_ACTIVE
+            startDemoMode() // TODO
+        } else {
+            qsTile.state = Tile.STATE_INACTIVE
+            stopDemoMode() // TODO
+        }
+
+        qsTile.updateTile()
+    }
+
+    private fun startDemoMode() {
+        // TODO: implement method
+    }
+
+    private fun stopDemoMode() {
+        // TODO: implement method
+    }
 }
