@@ -47,7 +47,7 @@
 
         <service
             android:name=".tiles.ForceRtlLayoutService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_force_rtl"
             android:label="@string/tile_force_rtl_layout"
