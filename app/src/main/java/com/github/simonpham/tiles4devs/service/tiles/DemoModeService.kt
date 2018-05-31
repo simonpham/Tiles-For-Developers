@@ -3,6 +3,7 @@ package com.github.simonpham.tiles4devs.service.tiles
 import android.content.Intent
 import android.os.Build
 import android.provider.Settings
+import android.service.quicksettings.Tile
 import com.github.simonpham.tiles4devs.SYSPROP_DEMO_MODE_ALLOWED
 import com.github.simonpham.tiles4devs.SYSPROP_DEMO_MODE_ON
 import com.github.simonpham.tiles4devs.service.BaseTileService
@@ -43,12 +44,17 @@ class DemoModeService : BaseTileService() {
         COMMAND_VOLUME("volume")
     }
 
-    override
-    fun onStartListening() {
+    override fun onStartListening() {
         super.onStartListening()
         if (Settings.Global.getInt(contentResolver, SYSPROP_DEMO_MODE_ALLOWED, 0) == 0) {
             setGlobalInt(SYSPROP_DEMO_MODE_ALLOWED, 1)
         }
+        refresh()
+    }
+
+    override fun refresh() {
+        qsTile.state = if (isFeatureEnabled()) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+        qsTile.updateTile()
     }
 
     override fun onClick() {
@@ -60,8 +66,8 @@ class DemoModeService : BaseTileService() {
         refresh()
     }
 
-    override fun isFeatureEnabled(): Boolean {
-        return Settings.Global.getInt(contentResolver, SYSPROP_DEMO_MODE_ON, 0) != 0
+    private fun isFeatureEnabled(): Boolean {
+        return getGlobalInt(SYSPROP_DEMO_MODE_ON) == 1
     }
 
     private fun startDemoMode() {
