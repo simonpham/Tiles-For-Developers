@@ -1,7 +1,9 @@
 package com.github.simonpham.tiles4devs.service.tiles
 
-import android.provider.Settings
+import android.os.SystemProperties
+import android.service.quicksettings.Tile
 import com.github.simonpham.tiles4devs.SYSPROP_DEBUG_GPU_OVERDRAW
+import com.github.simonpham.tiles4devs.kickSystemService
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
@@ -11,23 +13,16 @@ import com.github.simonpham.tiles4devs.service.BaseTileService
 
 class DebugGpuOverdrawService : BaseTileService() {
 
-    override fun onClick() {
-        val newValue = if (isFeatureEnabled()) "false" else "show"
-
-        try {
-            Settings.System.putString(contentResolver, SYSPROP_DEBUG_GPU_OVERDRAW, newValue)
-        } catch (e: Exception) {
-            showPermissionError()
-        }
-
-        refresh()
+    override fun refresh() {
+        val enabled = SystemProperties.get(SYSPROP_DEBUG_GPU_OVERDRAW, "false") == "show"
+        qsTile.state = if (enabled) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+        qsTile.updateTile()
     }
 
-    override fun isFeatureEnabled(): Boolean {
-        return try {
-            Settings.System.getString(contentResolver, SYSPROP_DEBUG_GPU_OVERDRAW) == "show"
-        } catch (e: Settings.SettingNotFoundException) {
-            false
-        }
+    override fun onClick() {
+        SystemProperties.set(SYSPROP_DEBUG_GPU_OVERDRAW,
+                if (qsTile.state == Tile.STATE_INACTIVE) "show" else "false")
+        kickSystemService() // Settings app magic
+        refresh()
     }
 }
