@@ -1,7 +1,6 @@
 package com.github.simonpham.tiles4devs.service
 
 import android.provider.Settings
-import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import com.github.simonpham.tiles4devs.R
 import com.github.simonpham.tiles4devs.util.toast
@@ -18,12 +17,7 @@ abstract class BaseTileService : TileService() {
         refresh()
     }
 
-    protected abstract fun isFeatureEnabled(): Boolean
-
-    protected fun refresh() {
-        qsTile?.state = if (isFeatureEnabled()) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-        qsTile?.updateTile()
-    }
+    abstract fun refresh()
 
     protected fun showPermissionError() {
         toast(R.string.toast_permission_required)
