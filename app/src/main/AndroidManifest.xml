@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.github.simonpham.tiles4devs">
 
+    <uses-permission android:name="android.permission.DUMP" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +13,7 @@
         android:theme="@style/AppTheme">
 
         <service
-            android:name=".tiles.DemoModeService"
+            android:name=".service.tiles.DemoModeService"
             android:enabled="true"
             android:exported="true"
             android:icon="@drawable/tile_icon_demo_mode"
@@ -22,7 +25,7 @@
         </service>
 
         <service
-            android:name=".tiles.DebugGpuOverdrawService"
+            android:name=".service.tiles.DebugGpuOverdrawService"
             android:enabled="true"
             android:exported="true"
             android:icon="@drawable/tile_icon_debug_overdraw"
@@ -34,7 +37,7 @@
         </service>
 
         <service
-            android:name=".tiles.ShowLayoutBoundsService"
+            android:name=".service.tiles.ShowLayoutBoundsService"
             android:enabled="true"
             android:exported="true"
             android:icon="@drawable/tile_icon_show_layout"
@@ -46,7 +49,7 @@
         </service>
 
         <service
-            android:name=".tiles.ForceRtlLayoutService"
+            android:name=".service.tiles.ForceRtlLayoutService"
             android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_force_rtl"
@@ -58,7 +61,7 @@
         </service>
 
         <service
-            android:name=".tiles.ProfileGpuRenderingService"
+            android:name=".service.tiles.ProfileGpuRenderingService"
             android:enabled="true"
             android:exported="true"
             android:icon="@drawable/tile_icon_graphics"

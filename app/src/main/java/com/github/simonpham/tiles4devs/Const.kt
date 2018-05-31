@@ -5,4 +5,9 @@ package com.github.simonpham.tiles4devs
  * Email: simonpham.dn@gmail.com
  */
 
-const val SYSPROPS_TRANSACTION = 1599295570
+const val SYSPROP_DEBUG_FORCE_RTL = "debug.force_rtl"
+const val SYSPROP_DEBUG_GPU_OVERDRAW = "debug.hwui.overdraw"
+const val SYSPROP_DEBUG_GPU_PROFILE = "debug.hwui.profile"
+const val SYSPROP_DEBUG_LAYOUT = "debug.layout"
+const val SYSPROP_DEMO_MODE_ALLOWED = "sysui_demo_allowed"
+const val SYSPROP_DEMO_MODE_ON = "sysui_tuner_demo_on"
