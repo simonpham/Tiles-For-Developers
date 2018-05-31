@@ -2,6 +2,8 @@ package com.github.simonpham.tiles4devs.tiles
 
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
+import com.github.simonpham.tiles4devs.SystemPropertiesProxy.getBoolean
+import com.github.simonpham.tiles4devs.kickSystemServices
 import eu.chainfire.libsuperuser.Shell
 
 /**
@@ -11,39 +13,36 @@ import eu.chainfire.libsuperuser.Shell
 
 class ShowLayoutBoundsService : TileService() {
 
-    override fun onTileAdded() {
-        super.onTileAdded()
-
-        qsTile.state = Tile.STATE_INACTIVE
-
-        qsTile.updateTile()
+    override fun onStartListening() {
+        super.onStartListening()
+        refresh()
     }
 
     override fun onClick() {
         super.onClick()
 
-        if (Shell.SU.available()) {
-            if (qsTile.state == Tile.STATE_INACTIVE) {
-                qsTile.state = Tile.STATE_ACTIVE
-                toggleOn()
-            } else {
-                qsTile.state = Tile.STATE_INACTIVE
-                toggleOff()
-            }
+        if (qsTile.state == Tile.STATE_INACTIVE) {
+            toggleOn()
         } else {
-            qsTile.state = Tile.STATE_INACTIVE
+            toggleOff()
         }
 
+        refresh()
+    }
+
+    private fun refresh() {
+        val enabled = getBoolean(applicationContext, "debug.layout", false)
+        qsTile.state = if (enabled) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
         qsTile.updateTile()
     }
 
     private fun toggleOn() {
         Shell.SU.run("setprop debug.layout true")
-        Shell.SU.run("service check SurfaceFlinger")
+        kickSystemServices()
     }
 
     private fun toggleOff() {
         Shell.SU.run("setprop debug.layout false")
-        Shell.SU.run("service check SurfaceFlinger")
+        kickSystemServices()
     }
 }
