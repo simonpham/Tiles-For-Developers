@@ -1,7 +1,9 @@
 package com.github.simonpham.tiles4devs.service.tiles
 
-import android.provider.Settings
+import android.os.SystemProperties
+import android.service.quicksettings.Tile
 import com.github.simonpham.tiles4devs.SYSPROP_DEBUG_GPU_PROFILE
+import com.github.simonpham.tiles4devs.kickSystemService
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
@@ -10,24 +12,16 @@ import com.github.simonpham.tiles4devs.service.BaseTileService
  */
 
 class ProfileGpuRenderingService : BaseTileService() {
-
-    override fun onClick() {
-        val newValue = if (isFeatureEnabled()) "false" else "visual_bars"
-
-        try {
-            Settings.System.putString(contentResolver, SYSPROP_DEBUG_GPU_PROFILE, newValue)
-        } catch (e: Exception) {
-            showPermissionError()
-        }
-
-        refresh()
+    override fun refresh() {
+        val enabled = SystemProperties.get(SYSPROP_DEBUG_GPU_PROFILE, "false") == "visual_bars"
+        qsTile.state = if (enabled) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+        qsTile.updateTile()
     }
 
-    override fun isFeatureEnabled(): Boolean {
-        return try {
-            Settings.System.getString(contentResolver, SYSPROP_DEBUG_GPU_PROFILE) == "visual_bars"
-        } catch (e: Settings.SettingNotFoundException) {
-            false
-        }
+    override fun onClick() {
+        SystemProperties.set(SYSPROP_DEBUG_GPU_PROFILE,
+                if (qsTile.state == Tile.STATE_INACTIVE) "visual_bars" else "false")
+        kickSystemService() // Settings app magic
+        refresh()
     }
 }
