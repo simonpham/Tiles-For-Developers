@@ -8,4 +8,7 @@
     <string name="tile_profile_gpu_rendering">Profile GPU rendering</string>
 
     <string name="toast_permission_required">Please grant permission!</string>
+    <string name="title_activity_pager">PagerActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
