@@ -13,6 +13,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:background="@drawable/ic_launcher_foreground"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/tvWelcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,27 +24,27 @@
         android:id="@+id/tvWelcome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
         android:gravity="center"
-        android:text="Welcome to Tiles for Developers"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:text="Welcome to\nTiles for Developers"
+        android:textAppearance="@style/AppTheme.Text.Title"
         app:layout_constraintBottom_toTopOf="@+id/tvGettingStarted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivHeader"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/ivHeader" />
 
     <TextView
         android:id="@+id/tvGettingStarted"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
         android:gravity="center"
         android:text="Getting set up is super easy."
-        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:textAppearance="@style/AppTheme.Text.Summary"
         app:layout_constraintBottom_toTopOf="@+id/btnGettingStarted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvWelcome"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome" />
 
     <Button
         android:id="@+id/btnGettingStarted"
@@ -55,7 +56,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGettingStarted"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@+id/tvGettingStarted" />
 
 </android.support.constraint.ConstraintLayout>
