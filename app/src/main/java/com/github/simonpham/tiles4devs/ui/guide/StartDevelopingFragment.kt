@@ -27,6 +27,11 @@ class StartDevelopingFragment : Fragment() {
 
         btnRateUs.setOnClickListener {
             openPlayStore(it.context, PACKAGE_NAME)
+            activity?.finish()
+        }
+
+        btnFinish.setOnClickListener {
+            activity?.finish()
         }
     }
 }
