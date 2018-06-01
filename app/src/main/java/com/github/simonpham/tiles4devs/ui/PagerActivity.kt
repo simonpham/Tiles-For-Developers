@@ -23,9 +23,9 @@ class PagerActivity : AppCompatActivity(), View.OnClickListener {
     private val context = SingletonInstances.getAppContext()
 
     private var color1 = ContextCompat.getColor(context, R.color.lightBlue)
-    private var color2 = ContextCompat.getColor(context, R.color.purple)
-    private var color3 = ContextCompat.getColor(context, R.color.red)
-    private var color4 = ContextCompat.getColor(context, R.color.orange)
+    private var color2 = ContextCompat.getColor(context, R.color.green)
+    private var color3 = ContextCompat.getColor(context, R.color.purple)
+    private var color4 = ContextCompat.getColor(context, R.color.red)
     var colorList = intArrayOf(color1, color2, color3, color4)
 
     private var indicators: Array<ImageView>? = null
