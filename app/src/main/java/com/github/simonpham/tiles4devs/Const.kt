@@ -20,5 +20,5 @@ const val PAGE_START_DEVELOPING = 3
 
 const val KEY_SU_AVAILABILITY = "KEY.SU_AVAILABILITY"
 
-const val PLAY_STORE_PACKAGE = "com.github.simonpham.tiles4devs"
+const val PACKAGE_NAME = "com.github.simonpham.tiles4devs"
 const val GITHUB_REPO = "https://github.com/simonpham/Tiles-For-Developers"
