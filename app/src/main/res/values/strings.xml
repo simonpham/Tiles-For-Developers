@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Tiles for Developers</string>
 
+    <string name="open_play_store">Open Play Store</string>
+
     <string name="tile_demo_mode">Demo mode</string>
     <string name="tile_debug_gpu_overdraw">Debug GPU overdraw</string>
     <string name="tile_show_layout_bounds">Show layout bounds</string>
@@ -12,6 +14,22 @@
     <string name="title_getting_started">Getting Started</string>
     <string name="title_grant_permission">Grant Permission</string>
     <string name="title_continue">Continue</string>
+    <string name="title_later">OK, I\'ll do that later</string>
+    <string name="title_rate_us">Rate us</string>
 
-    <string name="open_play_store">Open Play Store</string>
+    <string name="title_welcome">Welcome to Tiles for Developers</string>
+    <string name="title_getting_set_up">Getting set up is super easy.</string>
+    <string name="title_grant_su">Please grant SU permission to gather \"magic\" permissions</string>
+    <string name="title_grant_su_details">Some QS tiles (like Demo mode) require \"magic\" permissions in order to work</string>
+    <string name="title_congrats_add_tiles">Congrats! You can add some tiles now</string>
+    <string name="title_add_tiles_guide">Pull down your quick settings panel and click edit button to add some tiles</string>
+    <string name="title_set_up_done">Everything\'s set up! Let\'s start developing job :D</string>
+    <string name="title_go_rate_us">And don\'t forget to give us 5★</string>
+    <string name="title_su_requesting">Requesting superuser permission…</string>
+    <string name="title_magic_gathering">Gathering \"magic\" permissions…</string>
+    <string name="title_processing">Processing</string>
+    <string name="title_get_su_failed">Get superuser permission failed!</string>
+    <string name="title_check_again">Please check again</string>
+    <string name="title_get_permission_success">Get permissions successfully!</string>
+    <string name="title_follow_next_step">Follow the next step to add tiles to your quick settings panel</string>
 </resources>

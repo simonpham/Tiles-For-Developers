@@ -55,7 +55,7 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun requestSuPermission() {
-        tvMiniTitle.text = "Requesting superuser permission..."
+        tvMiniTitle.text = getString(R.string.title_su_requesting)
         doAsync {
             val result = Shell.SU.available()
             uiThread {
@@ -69,7 +69,7 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun requestMagicPermission() {
-        tvMiniTitle.text = "Gathering \"magic\" permissions..."
+        tvMiniTitle.text = getString(R.string.title_magic_gathering)
         doAsync {
             Shell.SU.run("pm grant $PACKAGE_NAME android.permission.WRITE_SECURE_SETTINGS")
             Shell.SU.run("pm grant $PACKAGE_NAME android.permission.DUMP")
@@ -80,15 +80,15 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun showProgress() {
-        tvTitle.text = "Processing"
+        tvTitle.text = getString(R.string.title_processing)
         pbLoading.show()
         btnContinue.gone()
         btnGrantPermission.gone()
     }
 
     private fun getSuFailed() {
-        tvTitle.text = "Get superuser permission failed!"
-        tvMiniTitle.text = "Please check again"
+        tvTitle.text = getString(R.string.title_get_su_failed)
+        tvMiniTitle.text = getString(R.string.title_check_again)
         isSuAvailable = false
         pbLoading.gone()
         btnContinue.gone()
@@ -101,8 +101,8 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun gotMagicPermission() {
-        tvTitle.text = "Get permissions successfully!"
-        tvMiniTitle.text = "Follow the next step to add tiles to your quick settings panel"
+        tvTitle.text = getString(R.string.title_get_permission_success)
+        tvMiniTitle.text = getString(R.string.title_follow_next_step)
         pbLoading.gone()
         btnContinue.show()
         btnGrantPermission.gone()
