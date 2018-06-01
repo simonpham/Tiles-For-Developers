@@ -2,18 +2,11 @@ package com.github.simonpham.tiles4devs.ui
 
 import android.animation.ArgbEvaluator
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.widget.ImageView
-import com.github.simonpham.tiles4devs.R
-import com.github.simonpham.tiles4devs.SingletonInstances
-import com.github.simonpham.tiles4devs.ui.guide.RequestPermissionFragment
-import com.github.simonpham.tiles4devs.ui.guide.StartDevelopingFragment
-import com.github.simonpham.tiles4devs.ui.guide.WelcomeFragment
+import com.github.simonpham.tiles4devs.*
 import kotlinx.android.synthetic.main.activity_pager.*
 
 
@@ -22,9 +15,9 @@ class PagerActivity : AppCompatActivity() {
     private val context = SingletonInstances.getAppContext()
 
     var color1 = ContextCompat.getColor(context, R.color.lightBlue)
-    var color2 = ContextCompat.getColor(context, R.color.orange)
-    var color3 = ContextCompat.getColor(context, R.color.green)
-    var color4 = ContextCompat.getColor(context, R.color.red)
+    var color2 = ContextCompat.getColor(context, R.color.purple)
+    var color3 = ContextCompat.getColor(context, R.color.red)
+    var color4 = ContextCompat.getColor(context, R.color.orange)
     var colorList = intArrayOf(color1, color2, color3, color4)
 
     private var indicators: Array<ImageView>? = null
@@ -38,7 +31,6 @@ class PagerActivity : AppCompatActivity() {
         viewPager.adapter = adapter
 
         indicators = arrayOf(intro_indicator_0, intro_indicator_1, intro_indicator_2, intro_indicator_3)
-        updateIndicators(page)
 
         viewPager.addOnPageChangeListener((object : ViewPager.OnPageChangeListener {
 
@@ -47,21 +39,21 @@ class PagerActivity : AppCompatActivity() {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 val evaluator = ArgbEvaluator()
                 val colorUpdate = evaluator.evaluate(positionOffset, colorList[position], colorList[if (position == 3) position else position + 1]) as Int
-                viewPager.setBackgroundColor(colorUpdate)
+                updateColor(colorUpdate)
             }
 
             override fun onPageSelected(position: Int) {
                 page = position
                 updateIndicators(page)
-
-                when (position) {
-                    0 -> viewPager.setBackgroundColor(color1)
-                    1 -> viewPager.setBackgroundColor(color2)
-                    2 -> viewPager.setBackgroundColor(color3)
-                    3 -> viewPager.setBackgroundColor(color4)
-                }
             }
         }))
+
+        viewPager.currentItem = 0
+    }
+
+    private fun updateColor(color: Int) {
+        viewPager.setBackgroundColor(color)
+        window.statusBarColor = color
     }
 
     override fun onBackPressed() {
