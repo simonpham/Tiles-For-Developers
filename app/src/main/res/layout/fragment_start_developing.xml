@@ -41,13 +41,13 @@
         android:gravity="center"
         android:text="And don't forget to give us 5★"
         android:textAppearance="@style/AppTheme.Text.Summary"
-        app:layout_constraintBottom_toTopOf="@+id/btnGrantPermission"
+        app:layout_constraintBottom_toTopOf="@+id/btnRateUs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
 
     <Button
-        android:id="@+id/btnGrantPermission"
+        android:id="@+id/btnRateUs"
         style="@style/AppTheme.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

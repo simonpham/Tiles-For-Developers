@@ -23,7 +23,8 @@ class WelcomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listener = (activity as? View.OnClickListener) ?: (parentFragment as? View.OnClickListener)
+        val listener = (activity as? View.OnClickListener)
+                ?: (parentFragment as? View.OnClickListener)
         btnGettingStarted.setOnClickListener(listener)
     }
 }
