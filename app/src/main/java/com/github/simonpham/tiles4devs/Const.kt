@@ -18,5 +18,7 @@ const val PAGE_REQUEST_PERMISSION = 1
 const val PAGE_ADD_TILE_GUIDE = 2
 const val PAGE_START_DEVELOPING = 3
 
+const val KEY_SU_AVAILABILITY = "KEY.SU_AVAILABILITY"
+
 const val PLAY_STORE_PACKAGE = "com.github.simonpham.tiles4devs"
 const val GITHUB_REPO = "https://github.com/simonpham/Tiles-For-Developers"

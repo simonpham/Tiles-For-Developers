@@ -41,10 +41,17 @@
         android:gravity="center"
         android:text="This will not screw up your device :P"
         android:textAppearance="@style/AppTheme.Text.Summary"
-        app:layout_constraintBottom_toTopOf="@+id/btnGrantPermission"
+        app:layout_constraintBottom_toTopOf="@+id/btnBarrier"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/btnBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="btnGrantPermission, btnContinue" />
 
     <Button
         android:id="@+id/btnGrantPermission"
@@ -53,6 +60,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
         android:text="@string/title_grant_permission"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMiniTitle" />
+
+    <Button
+        android:id="@+id/btnContinue"
+        style="@style/AppTheme.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:text="@string/title_continue"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
