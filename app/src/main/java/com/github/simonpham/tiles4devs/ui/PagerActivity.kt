@@ -8,14 +8,13 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import com.github.simonpham.tiles4devs.R
 import com.github.simonpham.tiles4devs.SingletonInstances
+import com.github.simonpham.tiles4devs.ui.guide.RequestPermissionFragment
+import com.github.simonpham.tiles4devs.ui.guide.StartDevelopingFragment
+import com.github.simonpham.tiles4devs.ui.guide.WelcomeFragment
 import kotlinx.android.synthetic.main.activity_pager.*
-import kotlinx.android.synthetic.main.fragment_pager.view.*
 
 
 class PagerActivity : AppCompatActivity() {
@@ -79,31 +78,15 @@ class PagerActivity : AppCompatActivity() {
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
-            return PlaceholderFragment.newInstance(position + 1)
+            return when (position) {
+                0 -> WelcomeFragment()
+                1 -> RequestPermissionFragment()
+                2 -> StartDevelopingFragment()
+                3 -> StartDevelopingFragment()
+                else -> throw IllegalArgumentException("Unknown selected fragment $position")
+            }
         }
 
         override fun getCount(): Int = 4
-    }
-
-    class PlaceholderFragment : Fragment() {
-
-        override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                                  savedInstanceState: Bundle?): View? {
-            val rootView = inflater.inflate(R.layout.fragment_pager, container, false)
-            rootView.section_label.text = getString(R.string.section_format, arguments?.getInt(ARG_SECTION_NUMBER))
-            return rootView
-        }
-
-        companion object {
-            private val ARG_SECTION_NUMBER = "section_number"
-
-            fun newInstance(sectionNumber: Int): PlaceholderFragment {
-                val fragment = PlaceholderFragment()
-                val args = Bundle()
-                args.putInt(ARG_SECTION_NUMBER, sectionNumber)
-                fragment.arguments = args
-                return fragment
-            }
-        }
     }
 }
