@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
+import com.github.simonpham.tiles4devs.PAGE_COUNT
 import com.github.simonpham.tiles4devs.R
 import com.github.simonpham.tiles4devs.SingletonInstances
 import kotlinx.android.synthetic.main.activity_pager.*
@@ -16,16 +17,15 @@ class PagerActivity : AppCompatActivity(), View.OnClickListener {
 
     // magic
     override fun onClick(v: View?) {
-        page++
-        viewPager.currentItem = page
+        nextPage()
     }
 
     private val context = SingletonInstances.getAppContext()
 
-    var color1 = ContextCompat.getColor(context, R.color.lightBlue)
-    var color2 = ContextCompat.getColor(context, R.color.purple)
-    var color3 = ContextCompat.getColor(context, R.color.red)
-    var color4 = ContextCompat.getColor(context, R.color.orange)
+    private var color1 = ContextCompat.getColor(context, R.color.lightBlue)
+    private var color2 = ContextCompat.getColor(context, R.color.purple)
+    private var color3 = ContextCompat.getColor(context, R.color.red)
+    private var color4 = ContextCompat.getColor(context, R.color.orange)
     var colorList = intArrayOf(color1, color2, color3, color4)
 
     private var indicators: Array<ImageView>? = null
@@ -79,5 +79,10 @@ class PagerActivity : AppCompatActivity(), View.OnClickListener {
                     if (i == position) R.drawable.indicator_selected else R.drawable.indicator_unselected
             )
         }
+    }
+
+    private fun nextPage() {
+        page = (page + 1) % PAGE_COUNT
+        viewPager.currentItem = page
     }
 }
