@@ -86,7 +86,7 @@ class DemoModeService : BaseTileService() {
         intent.putExtra("sims", "1")
         intent.putExtra("nosim", "false")
         intent.putExtra("level", "4")
-        intent.putExtra("datatypel", "")
+        intent.putExtra("datatype", "lte")
         sendBroadcast(intent)
 
         // Need to send this after so that the sim controller already exists.
