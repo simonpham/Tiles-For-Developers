@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.activity_pager.*
 class PagerActivity : AppCompatActivity() {
 
     private val context = SingletonInstances.getAppContext()
-    private var mSectionsPagerAdapter: SectionsPagerAdapter? = null
 
     var color1 = ContextCompat.getColor(context, R.color.lightBlue)
     var color2 = ContextCompat.getColor(context, R.color.orange)
@@ -29,23 +28,21 @@ class PagerActivity : AppCompatActivity() {
     var colorList = intArrayOf(color1, color2, color3, color4)
 
     private var indicators: Array<ImageView>? = null
-    var page = 0   //  to track page position
+    var page = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pager)
 
-        mSectionsPagerAdapter = SectionsPagerAdapter(supportFragmentManager)
-        viewPager.adapter = mSectionsPagerAdapter
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        viewPager.adapter = adapter
 
         indicators = arrayOf(intro_indicator_0, intro_indicator_1, intro_indicator_2, intro_indicator_3)
         updateIndicators(page)
 
         viewPager.addOnPageChangeListener((object : ViewPager.OnPageChangeListener {
 
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
+            override fun onPageScrollStateChanged(state: Int) { }
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 val evaluator = ArgbEvaluator()
@@ -82,20 +79,5 @@ class PagerActivity : AppCompatActivity() {
                     if (i == position) R.drawable.indicator_selected else R.drawable.indicator_unselected
             )
         }
-    }
-
-    inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-
-        override fun getItem(position: Int): Fragment {
-            return when (position) {
-                0 -> WelcomeFragment()
-                1 -> RequestPermissionFragment()
-                2 -> StartDevelopingFragment()
-                3 -> StartDevelopingFragment()
-                else -> throw IllegalArgumentException("Unknown selected fragment $position")
-            }
-        }
-
-        override fun getCount(): Int = 4
     }
 }
