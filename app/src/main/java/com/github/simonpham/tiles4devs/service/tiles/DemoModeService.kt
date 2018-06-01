@@ -96,6 +96,7 @@ class DemoModeService : BaseTileService() {
         intent.putExtra(DemoMode.EXTRA_COMMAND.value, DemoMode.COMMAND_BATTERY.value)
         intent.putExtra("level", "100")
         intent.putExtra("plugged", "false")
+        intent.putExtra("powersave", "false")
         sendBroadcast(intent)
 
         intent.putExtra(DemoMode.EXTRA_COMMAND.value, DemoMode.COMMAND_STATUS.value)
