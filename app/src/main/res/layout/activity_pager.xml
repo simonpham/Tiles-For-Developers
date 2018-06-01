@@ -19,7 +19,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="bottom">
+        android:layout_gravity="top">
 
         <ImageView
             android:id="@+id/intro_indicator_0"
