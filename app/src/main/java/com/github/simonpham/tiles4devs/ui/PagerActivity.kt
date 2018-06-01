@@ -40,6 +40,7 @@ class PagerActivity : AppCompatActivity() {
         viewPager.adapter = mSectionsPagerAdapter
 
         indicators = arrayOf(intro_indicator_0, intro_indicator_1, intro_indicator_2, intro_indicator_3)
+        updateIndicators(page)
 
         viewPager.addOnPageChangeListener((object : ViewPager.OnPageChangeListener {
 
