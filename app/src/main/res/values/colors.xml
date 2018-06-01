@@ -31,5 +31,5 @@
     <color name="grey">#9e9e9e</color>
     <color name="blueGrey">#607d8b</color>
 
-    <color name="indicator_unselected">#4D000000</color>
+    <color name="indicator_unselected">#4dffffff</color>
 </resources>
