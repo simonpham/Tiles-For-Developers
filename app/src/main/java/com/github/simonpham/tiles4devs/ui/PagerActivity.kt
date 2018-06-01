@@ -37,6 +37,7 @@ class PagerActivity : AppCompatActivity(), View.OnClickListener {
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
         viewPager.adapter = adapter
+        viewPager.offscreenPageLimit = 2
 
         indicators = arrayOf(intro_indicator_0, intro_indicator_1, intro_indicator_2, intro_indicator_3)
 
