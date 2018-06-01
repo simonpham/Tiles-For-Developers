@@ -1,8 +1,27 @@
+import java.text.SimpleDateFormat
+
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+
+
+def buildTimestamp() {
+    return (System.currentTimeMillis()/1000).toInteger()
+}
+
+def buildTime() {
+    def df = new SimpleDateFormat("hhmm") // you can change it
+    df.setTimeZone(TimeZone.getTimeZone("UTC"))
+    return df.format(new Date())
+}
+
+def buildDate() {
+    def df = new SimpleDateFormat("yy.MMdd") // you can change it
+    df.setTimeZone(TimeZone.getTimeZone("UTC"))
+    return df.format(new Date())
+}
 
 android {
     compileSdkVersion 27
@@ -15,9 +34,18 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        android.applicationVariants.all { variant ->
+            variant.outputs.all {
+                outputFileName = "${variant.name}-${variant.versionName}-${buildTimestamp()}.apk"
+            }
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            versionNameSuffix ".${defaultConfig.versionCode}.r${buildDate()}"
+        }
+        debug {
+            versionNameSuffix ".${defaultConfig.versionCode}.d${buildDate()}-${buildTime()}"
         }
     }
 }
