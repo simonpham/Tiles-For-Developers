@@ -63,18 +63,21 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun showProgress() {
+        pbLoading.show()
         btnContinue.gone()
         btnGrantPermission.gone()
     }
 
     private fun getSuFailed() {
         isSuAvailable = false
+        pbLoading.gone()
         btnContinue.gone()
         btnGrantPermission.show()
     }
 
     private fun gotSuPermission() {
         isSuAvailable = true
+        pbLoading.gone()
         btnContinue.show()
         btnGrantPermission.gone()
     }
