@@ -12,12 +12,12 @@
         android:id="@+id/ivHeader"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:background="@drawable/ic_launcher_foreground"
         app:layout_constraintBottom_toTopOf="@id/tvWelcome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:background="@drawable/ic_launcher_foreground" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/tvWelcome"
