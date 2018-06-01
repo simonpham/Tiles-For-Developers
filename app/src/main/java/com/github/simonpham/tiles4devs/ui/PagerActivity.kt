@@ -5,12 +5,20 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.ImageView
-import com.github.simonpham.tiles4devs.*
+import com.github.simonpham.tiles4devs.R
+import com.github.simonpham.tiles4devs.SingletonInstances
 import kotlinx.android.synthetic.main.activity_pager.*
 
 
-class PagerActivity : AppCompatActivity() {
+class PagerActivity : AppCompatActivity(), View.OnClickListener {
+
+    // magic
+    override fun onClick(v: View?) {
+        page++
+        viewPager.currentItem = page
+    }
 
     private val context = SingletonInstances.getAppContext()
 
@@ -34,7 +42,7 @@ class PagerActivity : AppCompatActivity() {
 
         viewPager.addOnPageChangeListener((object : ViewPager.OnPageChangeListener {
 
-            override fun onPageScrollStateChanged(state: Int) { }
+            override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
                 val evaluator = ArgbEvaluator()
