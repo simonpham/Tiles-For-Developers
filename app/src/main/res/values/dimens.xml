@@ -1,4 +1,24 @@
 <resources>
+    <dimen name="margin_huge">24dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_tiny">4dp</dimen>
+
+    <dimen name="margin_huge_half">12dp</dimen>
+    <dimen name="margin_normal_half">8dp</dimen>
+    <dimen name="margin_small_half">4dp</dimen>
+    <dimen name="margin_tiny_half">2dp</dimen>
+
+    <dimen name="text_size_heading">18sp</dimen>
+    <dimen name="text_size_title">16sp</dimen>
+    <dimen name="text_size_subtitle">15sp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+    <dimen name="text_size_small">13sp</dimen>
+
+    <dimen name="dp">1dp</dimen>
+
+    <dimen name="button_padding">24dp</dimen>
+
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
