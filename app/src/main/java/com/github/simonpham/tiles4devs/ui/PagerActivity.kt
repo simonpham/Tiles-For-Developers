@@ -67,6 +67,15 @@ class PagerActivity : AppCompatActivity() {
         }))
     }
 
+    override fun onBackPressed() {
+        if (page > 0) {
+            page -= 1
+            viewPager.setCurrentItem(page, true)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     fun updateIndicators(position: Int) {
         for (i in 0 until indicators!!.size) {
             indicators!![i].setBackgroundResource(
