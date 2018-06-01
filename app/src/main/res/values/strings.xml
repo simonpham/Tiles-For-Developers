@@ -11,4 +11,5 @@
 
     <string name="title_getting_started">Getting Started</string>
     <string name="title_grant_permission">Grant Permission</string>
+    <string name="open_play_store">Open Play Store</string>
 </resources>
