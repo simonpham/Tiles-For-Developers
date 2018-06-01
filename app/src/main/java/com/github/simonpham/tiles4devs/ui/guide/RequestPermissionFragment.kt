@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.github.simonpham.tiles4devs.KEY_SU_AVAILABILITY
+import com.github.simonpham.tiles4devs.PACKAGE_NAME
 import com.github.simonpham.tiles4devs.R
 import com.github.simonpham.tiles4devs.util.gone
 import com.github.simonpham.tiles4devs.util.show
@@ -49,26 +50,45 @@ class RequestPermissionFragment : Fragment() {
 
         btnGrantPermission.setOnClickListener {
             showProgress()
-            doAsync {
-                val result = Shell.SU.available()
-                uiThread {
-                    if (result) {
-                        gotSuPermission()
-                    } else {
-                        getSuFailed()
-                    }
+            requestSuPermission()
+        }
+    }
+
+    private fun requestSuPermission() {
+        tvMiniTitle.text = "Requesting superuser permission..."
+        doAsync {
+            val result = Shell.SU.available()
+            uiThread {
+                if (result) {
+                    gotSuPermission()
+                } else {
+                    getSuFailed()
                 }
             }
         }
     }
 
+    private fun requestMagicPermission() {
+        tvMiniTitle.text = "Gathering \"magic\" permissions..."
+        doAsync {
+            Shell.SU.run("pm grant $PACKAGE_NAME android.permission.WRITE_SECURE_SETTINGS")
+            Shell.SU.run("pm grant $PACKAGE_NAME android.permission.DUMP")
+            uiThread {
+                gotMagicPermission()
+            }
+        }
+    }
+
     private fun showProgress() {
+        tvTitle.text = "Processing"
         pbLoading.show()
         btnContinue.gone()
         btnGrantPermission.gone()
     }
 
     private fun getSuFailed() {
+        tvTitle.text = "Get superuser permission failed!"
+        tvMiniTitle.text = "Please check again"
         isSuAvailable = false
         pbLoading.gone()
         btnContinue.gone()
@@ -77,6 +97,12 @@ class RequestPermissionFragment : Fragment() {
 
     private fun gotSuPermission() {
         isSuAvailable = true
+        requestMagicPermission()
+    }
+
+    private fun gotMagicPermission() {
+        tvTitle.text = "Grant permissions successfully!"
+        tvMiniTitle.text = "Follow the next step to add tiles to your quick settings panel"
         pbLoading.gone()
         btnContinue.show()
         btnGrantPermission.gone()
