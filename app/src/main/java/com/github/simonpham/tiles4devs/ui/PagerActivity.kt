@@ -57,7 +57,7 @@ class PagerActivity : AppCompatActivity(), View.OnClickListener {
             }
         }))
 
-        viewPager.currentItem = 0
+        updateIndicators(page)
     }
 
     private fun updateColor(color: Int) {

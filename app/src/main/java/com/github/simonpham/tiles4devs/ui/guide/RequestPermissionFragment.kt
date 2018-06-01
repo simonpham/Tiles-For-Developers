@@ -101,7 +101,7 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun gotMagicPermission() {
-        tvTitle.text = "Grant permissions successfully!"
+        tvTitle.text = "Get permissions successfully!"
         tvMiniTitle.text = "Follow the next step to add tiles to your quick settings panel"
         pbLoading.gone()
         btnContinue.show()
