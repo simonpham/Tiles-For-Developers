@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.github.simonpham.tiles4devs">
 
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.DUMP" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 
@@ -63,6 +64,17 @@
             android:exported="true"
             android:icon="@drawable/tile_icon_graphics"
             android:label="@string/tile_profile_gpu_rendering"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.tiles.AdbOverNetworkService"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/tile_icon_adb_on"
+            android:label="@string/tile_adb_over_network"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />

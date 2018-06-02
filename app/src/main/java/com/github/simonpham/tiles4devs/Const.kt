@@ -5,6 +5,7 @@ package com.github.simonpham.tiles4devs
  * Email: simonpham.dn@gmail.com
  */
 
+const val SYSPROP_ADB_PORT = "service.adb.tcp.port"
 const val SYSPROP_DEBUG_FORCE_RTL = "debug.force_rtl"
 const val SYSPROP_DEBUG_GPU_OVERDRAW = "debug.hwui.overdraw"
 const val SYSPROP_DEBUG_GPU_PROFILE = "debug.hwui.profile"
