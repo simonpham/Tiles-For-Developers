@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.PowerManager
 import android.service.quicksettings.TileService
+import com.github.simonpham.tiles4devs.service.tiles.CaffeineTileHelper
 
 /**
  * Created by Simon Pham on 6/1/18.
@@ -27,9 +28,11 @@ class SingletonInstances private constructor(private val appContext: Context) {
         fun getAppContext() = INSTANCE.appContext
         fun getPowerManager() = INSTANCE.powerManager
         fun getWakeLock(): PowerManager.WakeLock = INSTANCE.wakeLock
+        fun getCaffeineTileHelper() = INSTANCE.caffeineTileHelper
     }
 
     private val powerManager by lazy { getAppContext().getSystemService(TileService.POWER_SERVICE) as PowerManager }
     @Suppress("DEPRECATION")
     private val wakeLock by lazy { getPowerManager().newWakeLock(PowerManager.FULL_WAKE_LOCK, "CaffeineTile") }
+    private val caffeineTileHelper by lazy { CaffeineTileHelper() }
 }
