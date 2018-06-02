@@ -33,7 +33,7 @@
     <string name="title_magic_gathering">Gathering \"magic\" permissions…</string>
     <string name="title_processing">Processing</string>
     <string name="title_get_su_failed">Get superuser permission failed!</string>
-    <string name="title_check_again">Please check again</string>
+    <string name="title_check_again">Don\'t be worried to tap Skip\nMost of the tiles will work perfectly without these permissions</string>
     <string name="title_get_permission_success">Get permissions successfully!</string>
     <string name="title_follow_next_step">Follow the next step to add tiles to your quick settings panel</string>
 </resources>
