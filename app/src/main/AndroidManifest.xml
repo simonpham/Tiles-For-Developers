@@ -3,6 +3,7 @@
     package="com.github.simonpham.tiles4devs">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.DUMP" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 
@@ -75,6 +76,17 @@
             android:exported="true"
             android:icon="@drawable/tile_icon_adb_on"
             android:label="@string/tile_adb_over_network"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.tiles.CaffeineService"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@drawable/tile_icon_caffeine"
+            android:label="@string/tile_caffeine"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
