@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/source
+    docker:
+      - image: circleci/android:api-27-alpha
+    environment:
+      JVM_OPTS: -Xmx4608m
+    steps:
+      - checkout
+      - restore_cache:
+          key: "dependencies-cache"
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: "dependencies-cache"
+      - run:
+          name: Copy error report
+          command: ./copy_artifacts.sh;
+          when: on_fail
+      - store_artifacts:
+          path: artifacts
