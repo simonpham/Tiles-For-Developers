@@ -78,4 +78,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/btnSkip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:background="?selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:padding="@dimen/margin_small"
+        android:text="@string/title_skip"
+        android:textAllCaps="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/btnGrantPermission"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnGrantPermission"
+        app:layout_constraintTop_toTopOf="@+id/btnGrantPermission"
+        tool:visibility="visible" />
+
 </android.support.constraint.ConstraintLayout>

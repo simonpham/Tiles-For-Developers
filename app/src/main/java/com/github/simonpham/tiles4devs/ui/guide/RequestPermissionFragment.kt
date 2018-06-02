@@ -55,6 +55,7 @@ class RequestPermissionFragment : Fragment() {
         val listener = (activity as? View.OnClickListener)
                 ?: (parentFragment as? View.OnClickListener)
         btnContinue.setOnClickListener(listener)
+        btnSkip.setOnClickListener(listener)
 
         btnGrantPermission.setOnClickListener {
             requestSuPermission()
@@ -115,6 +116,7 @@ class RequestPermissionFragment : Fragment() {
         pbLoading.show()
         btnContinue.gone()
         btnGrantPermission.gone()
+        btnSkip.gone()
     }
 
     private fun showSuccess() {
@@ -123,6 +125,7 @@ class RequestPermissionFragment : Fragment() {
         pbLoading.gone()
         btnContinue.show()
         btnGrantPermission.gone()
+        btnSkip.gone()
     }
 
     private fun showSuFail() {
@@ -131,5 +134,6 @@ class RequestPermissionFragment : Fragment() {
         pbLoading.gone()
         btnContinue.gone()
         btnGrantPermission.show()
+        btnSkip.show()
     }
 }
