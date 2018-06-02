@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.github.simonpham.tiles4devs.KEY_MAGIC_AVAILABILITY
 import com.github.simonpham.tiles4devs.KEY_SU_AVAILABILITY
 import com.github.simonpham.tiles4devs.PACKAGE_NAME
 import com.github.simonpham.tiles4devs.R
@@ -23,9 +24,11 @@ import org.jetbrains.anko.uiThread
 class RequestPermissionFragment : Fragment() {
 
     private var isSuAvailable: Boolean = false
+    private var isMagicAvailable: Boolean = false
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putBoolean(KEY_SU_AVAILABILITY, isSuAvailable)
+        outState.putBoolean(KEY_MAGIC_AVAILABILITY, isMagicAvailable)
         super.onSaveInstanceState(outState)
     }
 
@@ -39,8 +42,13 @@ class RequestPermissionFragment : Fragment() {
 
         if (savedInstanceState != null) {
             isSuAvailable = savedInstanceState.getBoolean(KEY_SU_AVAILABILITY)
+            isMagicAvailable = savedInstanceState.getBoolean(KEY_SU_AVAILABILITY)
             if (isSuAvailable) {
-                gotMagicPermission()
+                if (isMagicAvailable) {
+                    gotMagicPermission()
+                } else {
+                    requestMagicPermission()
+                }
             }
         }
 
@@ -54,7 +62,9 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun requestSuPermission() {
-        showProgress(getString(R.string.title_su_requesting))
+        if (context != null) {
+            showProgress(getString(R.string.title_su_requesting))
+        }
         doAsync {
             val result = Shell.SU.available()
             uiThread {
@@ -68,13 +78,34 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun requestMagicPermission() {
-        showProgress(getString(R.string.title_magic_gathering))
+        if (context != null) {
+            showProgress(getString(R.string.title_magic_gathering))
+        }
         doAsync {
             Shell.SU.run("pm grant $PACKAGE_NAME android.permission.WRITE_SECURE_SETTINGS")
             Shell.SU.run("pm grant $PACKAGE_NAME android.permission.DUMP")
             uiThread {
                 gotMagicPermission()
             }
+        }
+    }
+
+    private fun getSuFailed() {
+        isSuAvailable = false
+        if (context != null) {
+            showSuFail()
+        }
+    }
+
+    private fun gotSuPermission() {
+        isSuAvailable = true
+        requestMagicPermission()
+    }
+
+    private fun gotMagicPermission() {
+        isMagicAvailable = true
+        if (context != null) {
+            showSuccess()
         }
     }
 
@@ -86,25 +117,19 @@ class RequestPermissionFragment : Fragment() {
         btnGrantPermission.gone()
     }
 
-    private fun getSuFailed() {
-        tvTitle.text = getString(R.string.title_get_su_failed)
-        tvMiniTitle.text = getString(R.string.title_check_again)
-        isSuAvailable = false
-        pbLoading.gone()
-        btnContinue.gone()
-        btnGrantPermission.show()
-    }
-
-    private fun gotSuPermission() {
-        isSuAvailable = true
-        requestMagicPermission()
-    }
-
-    private fun gotMagicPermission() {
+    private fun showSuccess() {
         tvTitle.text = getString(R.string.title_get_permission_success)
         tvMiniTitle.text = getString(R.string.title_follow_next_step)
         pbLoading.gone()
         btnContinue.show()
         btnGrantPermission.gone()
+    }
+
+    private fun showSuFail() {
+        tvTitle.text = getString(R.string.title_get_su_failed)
+        tvMiniTitle.text = getString(R.string.title_check_again)
+        pbLoading.gone()
+        btnContinue.gone()
+        btnGrantPermission.show()
     }
 }

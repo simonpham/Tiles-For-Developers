@@ -19,6 +19,7 @@ const val PAGE_ADD_TILE_GUIDE = 2
 const val PAGE_START_DEVELOPING = 3
 
 const val KEY_SU_AVAILABILITY = "KEY.SU_AVAILABILITY"
+const val KEY_MAGIC_AVAILABILITY = "KEY.MAGIC_AVAILABILITY"
 
 const val PACKAGE_NAME = "com.github.simonpham.tiles4devs"
 const val GITHUB_REPO = "https://github.com/simonpham/Tiles-For-Developers"
