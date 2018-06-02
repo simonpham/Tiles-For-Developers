@@ -40,7 +40,7 @@ class RequestPermissionFragment : Fragment() {
         if (savedInstanceState != null) {
             isSuAvailable = savedInstanceState.getBoolean(KEY_SU_AVAILABILITY)
             if (isSuAvailable) {
-                gotSuPermission()
+                gotMagicPermission()
             }
         }
 
@@ -49,13 +49,12 @@ class RequestPermissionFragment : Fragment() {
         btnContinue.setOnClickListener(listener)
 
         btnGrantPermission.setOnClickListener {
-            showProgress()
             requestSuPermission()
         }
     }
 
     private fun requestSuPermission() {
-        tvMiniTitle.text = getString(R.string.title_su_requesting)
+        showProgress(getString(R.string.title_su_requesting))
         doAsync {
             val result = Shell.SU.available()
             uiThread {
@@ -69,7 +68,7 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun requestMagicPermission() {
-        tvMiniTitle.text = getString(R.string.title_magic_gathering)
+        showProgress(getString(R.string.title_magic_gathering))
         doAsync {
             Shell.SU.run("pm grant $PACKAGE_NAME android.permission.WRITE_SECURE_SETTINGS")
             Shell.SU.run("pm grant $PACKAGE_NAME android.permission.DUMP")
@@ -79,8 +78,9 @@ class RequestPermissionFragment : Fragment() {
         }
     }
 
-    private fun showProgress() {
+    private fun showProgress(title: String) {
         tvTitle.text = getString(R.string.title_processing)
+        tvMiniTitle.text = title
         pbLoading.show()
         btnContinue.gone()
         btnGrantPermission.gone()
