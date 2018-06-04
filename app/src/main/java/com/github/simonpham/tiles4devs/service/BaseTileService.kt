@@ -18,27 +18,4 @@ abstract class BaseTileService : TileService() {
     }
 
     abstract fun refresh()
-
-    protected fun showPermissionError() {
-        toast(R.string.toast_permission_required)
-    }
-
-    protected fun setGlobalInt(key: String, value: Int) {
-        try {
-            Settings.Global.putInt(contentResolver, key, value)
-        } catch (se: SecurityException) {
-            showPermissionError()
-        }
-    }
-
-    protected fun getGlobalInt(key: String): Int {
-        var value = 0
-        try {
-            value = Settings.Global.getInt(contentResolver, key)
-        } catch (se: SecurityException) {
-            showPermissionError()
-        } finally {
-            return value
-        }
-    }
 }

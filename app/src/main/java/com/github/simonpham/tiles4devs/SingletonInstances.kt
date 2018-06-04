@@ -29,10 +29,12 @@ class SingletonInstances private constructor(private val appContext: Context) {
         fun getPowerManager() = INSTANCE.powerManager
         fun getWakeLock(): PowerManager.WakeLock = INSTANCE.wakeLock
         fun getCaffeineTileHelper() = INSTANCE.caffeineTileHelper
+        fun getDevSettings() =  INSTANCE.devSettings
     }
 
     private val powerManager by lazy { getAppContext().getSystemService(TileService.POWER_SERVICE) as PowerManager }
     @Suppress("DEPRECATION")
     private val wakeLock by lazy { getPowerManager().newWakeLock(PowerManager.FULL_WAKE_LOCK, "CaffeineTile") }
     private val caffeineTileHelper by lazy { CaffeineTileHelper() }
+    private val devSettings by lazy { DeveloperSettings(getAppContext()) }
 }
