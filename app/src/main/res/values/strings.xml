@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tiles for Developers</string>
+    <string name="app_name">DevTiles</string>
 
     <string name="open_play_store">Open Play Store</string>
 
@@ -27,7 +27,7 @@
     <string name="title_rate_us">Rate us</string>
     <string name="title_finish">app.finish()</string>
 
-    <string name="title_welcome">Welcome to\nTiles for Developers</string>
+    <string name="title_welcome">Welcome to DevTiles</string>
     <string name="title_getting_set_up">Getting set up is super easy.</string>
     <string name="title_grant_su">Please grant SU permission in order to gather \"magic\" permissions</string>
     <string name="title_grant_su_details">Some QS tiles (like Demo mode) require these permissions to work</string>
