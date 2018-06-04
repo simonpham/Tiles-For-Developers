@@ -15,6 +15,7 @@
     <string name="tile_strict_mode">Strict mode</string>
     <string name="tile_strict_mode_enabled">Strict mode enabled</string>
     <string name="tile_strict_mode_disabled">Strict mode disabled</string>
+    <string name="tile_usb_debugging">USB debugging</string>
 
     <string name="toast_permission_required">Please grant permission!</string>
 
