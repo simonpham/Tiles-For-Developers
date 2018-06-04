@@ -10,6 +10,12 @@
     <string name="tile_profile_gpu_rendering">Profile GPU rendering</string>
     <string name="tile_adb_over_network">ADB over network</string>
     <string name="tile_caffeine">Caffeine</string>
+    <string name="tile_show_taps">Show taps</string>
+    <string name="tile_animator_duration">Animator duration scale</string>
+    <string name="tile_strict_mode">Strict mode</string>
+    <string name="tile_strict_mode_enabled">Strict mode enabled</string>
+    <string name="tile_strict_mode_disabled">Strict mode disabled</string>
+    <string name="tile_usb_debugging">USB debugging</string>
 
     <string name="toast_permission_required">Please grant permission!</string>
 

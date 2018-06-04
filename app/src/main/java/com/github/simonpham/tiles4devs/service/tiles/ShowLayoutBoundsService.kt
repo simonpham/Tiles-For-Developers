@@ -3,7 +3,6 @@ package com.github.simonpham.tiles4devs.service.tiles
 import android.os.SystemProperties
 import android.service.quicksettings.Tile
 import com.github.simonpham.tiles4devs.SYSPROP_DEBUG_LAYOUT
-import com.github.simonpham.tiles4devs.kickSystemService
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
@@ -22,7 +21,7 @@ class ShowLayoutBoundsService : BaseTileService() {
     override fun onClick() {
         SystemProperties.set(SYSPROP_DEBUG_LAYOUT,
                 if (qsTile.state == Tile.STATE_INACTIVE) "true" else "false")
-        kickSystemService() // Settings app magic
+        devSettings.kickSystemService() // Settings app magic
         refresh()
     }
 }
