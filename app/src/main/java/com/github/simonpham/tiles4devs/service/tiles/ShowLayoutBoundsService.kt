@@ -3,7 +3,6 @@ package com.github.simonpham.tiles4devs.service.tiles
 import android.os.SystemProperties
 import android.service.quicksettings.Tile
 import com.github.simonpham.tiles4devs.SYSPROP_DEBUG_LAYOUT
-import com.github.simonpham.tiles4devs.SingletonInstances
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
@@ -12,8 +11,6 @@ import com.github.simonpham.tiles4devs.service.BaseTileService
  */
 
 class ShowLayoutBoundsService : BaseTileService() {
-
-    private val devSettings = SingletonInstances.getDevSettings()
 
     override fun refresh() {
         val enabled = SystemProperties.getBoolean(SYSPROP_DEBUG_LAYOUT, false)
