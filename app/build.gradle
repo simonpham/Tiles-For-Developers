@@ -44,7 +44,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            versionNameSuffix ".${defaultConfig.versionCode}}"
+            versionNameSuffix ".${defaultConfig.versionCode}"
         }
         debug {
             versionNameSuffix ".${defaultConfig.versionCode}-d${buildDate()}-${buildTime()}"
