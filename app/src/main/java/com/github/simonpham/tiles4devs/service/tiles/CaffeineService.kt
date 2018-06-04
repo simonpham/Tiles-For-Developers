@@ -16,7 +16,7 @@ import com.github.simonpham.tiles4devs.service.BaseTileService
 class CaffeineService : BaseTileService() {
 
     private val wakeLock = SingletonInstances.getWakeLock()
-    private val timer = SingletonInstances.getCaffeineTileHelper()
+    private val helper = SingletonInstances.getCaffeineTileHelper()
 
     private var mLastClickTime: Long = -1
     private var mDuration: Int = 0
@@ -28,14 +28,19 @@ class CaffeineService : BaseTileService() {
             -1 // infinity
     )
 
+    override fun onTileRemoved() {
+        super.onTileRemoved()
+        helper.handleDestroy()
+    }
+
     override fun onCreate() {
         super.onCreate()
-        timer.service = this
+        helper.service = this
     }
 
     override fun refresh() {
         if (wakeLock.isHeld) {
-            qsTile.label = timer.formatValueWithRemainingTime()
+            qsTile.label = helper.formatValueWithRemainingTime()
             qsTile.state = Tile.STATE_ACTIVE
         } else {
             qsTile.label = getString(R.string.tile_caffeine)
@@ -53,13 +58,13 @@ class CaffeineService : BaseTileService() {
             if (mDuration >= DURATIONS.size) {
                 // all durations cycled, turn if off
                 mDuration = -1
-                timer.stop()
+                helper.stop()
                 if (wakeLock.isHeld) {
                     wakeLock.release()
                 }
             } else {
                 // change duration
-                timer.createAndStart(DURATIONS[mDuration])
+                helper.createAndStart(DURATIONS[mDuration])
                 if (!wakeLock.isHeld) {
                     wakeLock.acquire()
                 }
@@ -68,11 +73,11 @@ class CaffeineService : BaseTileService() {
             // toggle
             if (wakeLock.isHeld) {
                 wakeLock.release()
-                timer.stop()
+                helper.stop()
             } else {
                 wakeLock.acquire()
                 mDuration = 0
-                timer.createAndStart(DURATIONS[mDuration])
+                helper.createAndStart(DURATIONS[mDuration])
             }
         }
         mLastClickTime = SystemClock.elapsedRealtime()
