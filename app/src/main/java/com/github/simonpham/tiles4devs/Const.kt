@@ -11,6 +11,8 @@ const val SYSPROP_DEBUG_FORCE_RTL = "debug.force_rtl"
 const val SYSPROP_DEBUG_GPU_OVERDRAW = "debug.hwui.overdraw"
 const val SYSPROP_DEBUG_GPU_PROFILE = "debug.hwui.profile"
 const val SYSPROP_DEBUG_LAYOUT = "debug.layout"
+const val SYSPROP_STRICT_MODE_VISUAL = "persist.sys.strictmode.visual"
+const val SYSPROP_STRICT_MODE_DISABLE = "persist.sys.strictmode.disable"
 
 // settings require write secure settings permission
 const val SYS_ANIMATOR_DURATION_SCALE = "animator_duration_scale"
