@@ -39,7 +39,7 @@ object AnimatorDurationScaler {
 
     fun setAnimatorScale(
             devSettings: DeveloperSettings,
-            @FloatRange(from = 0.0, to = 10.0) scale: Float): Boolean {
+            @FloatRange(from = 0.0, to = 10.0) scale: Float) {
         devSettings.setGlobalFloat(Settings.Global.ANIMATOR_DURATION_SCALE, scale)
     }
 }
