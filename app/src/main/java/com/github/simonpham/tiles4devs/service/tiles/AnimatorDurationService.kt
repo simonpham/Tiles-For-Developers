@@ -3,6 +3,7 @@ package com.github.simonpham.tiles4devs.service.tiles
 import android.graphics.drawable.Icon
 import android.support.v7.app.AlertDialog
 import android.view.ContextThemeWrapper
+import android.view.WindowManager
 import com.github.simonpham.tiles4devs.R
 import com.github.simonpham.tiles4devs.service.BaseTileService
 import com.github.simonpham.tiles4devs.util.AnimatorDurationScaler
@@ -44,18 +45,21 @@ class AnimatorDurationService : BaseTileService() {
 
     override fun onClick() {
         val current = getAnimatorScale(devSettings)
-        showDialog(getDialog(scales.indexOf(current)))
+        getDialog(scales.indexOf(current)).show()
     }
 
+    @Suppress("DEPRECATION")
     private fun getDialog(selectedIndex: Int): AlertDialog {
-        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
-        builder.setTitle(R.string.tile_animator_duration)
+        val dialog = AlertDialog.Builder(ContextThemeWrapper(appContext, R.style.AppTheme_Dialog))
+                .setTitle(R.string.tile_animator_duration)
                 .setSingleChoiceItems(choices, selectedIndex, { dialog, which ->
                     AnimatorDurationScaler.setAnimatorScale(devSettings, scales[which])
                     refresh()
                     dialog.dismiss()
                 })
                 .setNegativeButton(android.R.string.cancel, null)
-        return builder.create()
+                .create()
+        dialog.window.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT)
+        return dialog
     }
 }
