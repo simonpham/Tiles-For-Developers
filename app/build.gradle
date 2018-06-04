@@ -28,7 +28,9 @@ android {
     defaultConfig {
         applicationId "com.github.simonpham.tiles4devs"
         minSdkVersion 24
-        targetSdkVersion 27
+        // Writing System Settings fails on higher versions
+        //noinspection OldTargetApi
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

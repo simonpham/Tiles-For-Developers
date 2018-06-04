@@ -6,6 +6,7 @@ import android.provider.Settings
 import android.service.quicksettings.Tile
 import com.github.simonpham.tiles4devs.SYSPROP_DEMO_MODE_ALLOWED
 import com.github.simonpham.tiles4devs.SYSPROP_DEMO_MODE_ON
+import com.github.simonpham.tiles4devs.SingletonInstances
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
@@ -15,6 +16,8 @@ import com.github.simonpham.tiles4devs.service.BaseTileService
 
 // TODO: let user customize Demo mode
 class DemoModeService : BaseTileService() {
+
+    private val devSettings = SingletonInstances.getDevSettings()
 
     private val STATUS_ICONS = listOf(
             "volume",
@@ -47,7 +50,7 @@ class DemoModeService : BaseTileService() {
     override fun onStartListening() {
         super.onStartListening()
         if (Settings.Global.getInt(contentResolver, SYSPROP_DEMO_MODE_ALLOWED, 0) == 0) {
-            setGlobalInt(SYSPROP_DEMO_MODE_ALLOWED, 1)
+            devSettings.setGlobalInt(SYSPROP_DEMO_MODE_ALLOWED, 1)
         }
         refresh()
     }
@@ -67,7 +70,7 @@ class DemoModeService : BaseTileService() {
     }
 
     private fun isFeatureEnabled(): Boolean {
-        return getGlobalInt(SYSPROP_DEMO_MODE_ON) == 1
+        return devSettings.getGlobalInt(SYSPROP_DEMO_MODE_ON) == 1
     }
 
     private fun startDemoMode() {
@@ -109,7 +112,7 @@ class DemoModeService : BaseTileService() {
         intent.putExtra("visible", "false")
         sendBroadcast(intent)
 
-        setGlobalInt(SYSPROP_DEMO_MODE_ON, 1)
+        devSettings.setGlobalInt(SYSPROP_DEMO_MODE_ON, 1)
     }
 
     private fun getDeviceVersionForDemoClock(): String {
@@ -120,7 +123,7 @@ class DemoModeService : BaseTileService() {
         val intent = Intent(DemoMode.ACTION_DEMO.value)
         intent.putExtra(DemoMode.EXTRA_COMMAND.value, DemoMode.COMMAND_EXIT.value)
         sendBroadcast(intent)
-        setGlobalInt(SYSPROP_DEMO_MODE_ON, 0)
+        devSettings.setGlobalInt(SYSPROP_DEMO_MODE_ON, 0)
     }
 
 
