@@ -2,7 +2,6 @@ package com.github.simonpham.tiles4devs.service.tiles
 
 import android.service.quicksettings.Tile
 import com.github.simonpham.tiles4devs.SYSPROP_SHOW_TAPS
-import com.github.simonpham.tiles4devs.SingletonInstances
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
@@ -11,8 +10,6 @@ import com.github.simonpham.tiles4devs.service.BaseTileService
  */
 
 class ShowTapsService : BaseTileService() {
-
-    private val devSettings = SingletonInstances.getDevSettings()
 
     override fun refresh() {
         qsTile.state = if (isFeatureEnabled()) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE

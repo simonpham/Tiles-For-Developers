@@ -6,7 +6,6 @@ import android.provider.Settings
 import android.service.quicksettings.Tile
 import com.github.simonpham.tiles4devs.SYSPROP_DEMO_MODE_ALLOWED
 import com.github.simonpham.tiles4devs.SYSPROP_DEMO_MODE_ON
-import com.github.simonpham.tiles4devs.SingletonInstances
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
@@ -16,8 +15,6 @@ import com.github.simonpham.tiles4devs.service.BaseTileService
 
 // TODO: let user customize Demo mode
 class DemoModeService : BaseTileService() {
-
-    private val devSettings = SingletonInstances.getDevSettings()
 
     private val STATUS_ICONS = listOf(
             "volume",
