@@ -1,7 +1,8 @@
 package com.github.simonpham.tiles4devs.service.tiles
 
-import android.app.AlertDialog
 import android.graphics.drawable.Icon
+import android.support.v7.app.AlertDialog
+import android.view.ContextThemeWrapper
 import com.github.simonpham.tiles4devs.R
 import com.github.simonpham.tiles4devs.service.BaseTileService
 import com.github.simonpham.tiles4devs.util.AnimatorDurationScaler
@@ -47,7 +48,7 @@ class AnimatorDurationService : BaseTileService() {
     }
 
     private fun getDialog(selectedIndex: Int): AlertDialog {
-        val builder = AlertDialog.Builder(this@AnimatorDurationService)
+        val builder = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
         builder.setTitle(R.string.tile_animator_duration)
                 .setSingleChoiceItems(choices, selectedIndex, { dialog, which ->
                     AnimatorDurationScaler.setAnimatorScale(devSettings, scales[which])
