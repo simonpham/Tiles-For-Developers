@@ -15,10 +15,11 @@ const val SYSPROP_STRICT_MODE_DISABLE = "persist.sys.strictmode.disable"
 const val SYSPROP_STRICT_MODE_VISUAL = "persist.sys.strictmode.visual"
 
 // settings require write secure settings permission
-const val SYS_ANIMATOR_DURATION_SCALE = "animator_duration_scale"
-const val SYS_DEMO_MODE_ALLOWED = "sysui_demo_allowed"
-const val SYS_DEMO_MODE_ON = "sysui_tuner_demo_on"
-const val SYS_SHOW_TAPS = "show_touches"
+const val GLOBAL_ANIMATOR_DURATION_SCALE = "animator_duration_scale"
+const val GLOBAL_ADB_ENABLED = "adb_enabled"
+const val GLOBAL_DEMO_MODE_ALLOWED = "sysui_demo_allowed"
+const val GLOBAL_DEMO_MODE_ON = "sysui_tuner_demo_on"
+const val SYSTEM_SHOW_TAPS = "show_touches"
 
 const val PAGE_COUNT = 4
 const val PAGE_WELCOME = 0

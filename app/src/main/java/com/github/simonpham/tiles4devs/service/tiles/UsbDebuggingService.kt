@@ -1,15 +1,15 @@
 package com.github.simonpham.tiles4devs.service.tiles
 
 import android.service.quicksettings.Tile
-import com.github.simonpham.tiles4devs.SYSTEM_SHOW_TAPS
+import com.github.simonpham.tiles4devs.GLOBAL_ADB_ENABLED
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
- * Created by Simon Pham on 6/4/18.
+ * Created by Simon Pham on 6/5/18.
  * Email: simonpham.dn@gmail.com
  */
 
-class ShowTapsService : BaseTileService() {
+class UsbDebuggingService : BaseTileService() {
 
     override fun refresh() {
         qsTile.state = if (isFeatureEnabled()) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
@@ -18,14 +18,14 @@ class ShowTapsService : BaseTileService() {
 
     override fun onClick() {
         if (isFeatureEnabled()) {
-            devSettings.setSystemInt(SYSTEM_SHOW_TAPS, 0)
+            devSettings.setGlobalInt(GLOBAL_ADB_ENABLED, 0)
         } else {
-            devSettings.setSystemInt(SYSTEM_SHOW_TAPS, 1)
+            devSettings.setGlobalInt(GLOBAL_ADB_ENABLED, 1)
         }
         refresh()
     }
 
     private fun isFeatureEnabled(): Boolean {
-        return devSettings.getSystemInt(SYSTEM_SHOW_TAPS) == 1
+        return devSettings.getGlobalInt(GLOBAL_ADB_ENABLED) == 1
     }
 }

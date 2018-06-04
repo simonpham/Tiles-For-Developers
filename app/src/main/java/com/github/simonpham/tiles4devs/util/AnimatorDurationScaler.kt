@@ -2,7 +2,7 @@ package com.github.simonpham.tiles4devs.util
 
 import android.support.annotation.DrawableRes
 import android.support.annotation.FloatRange
-import com.github.simonpham.tiles4devs.SYS_ANIMATOR_DURATION_SCALE
+import com.github.simonpham.tiles4devs.GLOBAL_ANIMATOR_DURATION_SCALE
 import com.github.simonpham.tiles4devs.DeveloperSettings
 import com.github.simonpham.tiles4devs.R
 
@@ -34,12 +34,12 @@ object AnimatorDurationScaler {
     }
 
     fun getAnimatorScale(devSettings: DeveloperSettings): Float {
-        return devSettings.getGlobalFloat(SYS_ANIMATOR_DURATION_SCALE)
+        return devSettings.getGlobalFloat(GLOBAL_ANIMATOR_DURATION_SCALE)
     }
 
     fun setAnimatorScale(
             devSettings: DeveloperSettings,
             @FloatRange(from = 0.0, to = 10.0) scale: Float) {
-        devSettings.setGlobalFloat(SYS_ANIMATOR_DURATION_SCALE, scale)
+        devSettings.setGlobalFloat(GLOBAL_ANIMATOR_DURATION_SCALE, scale)
     }
 }
