@@ -18,14 +18,14 @@ class UsbDebuggingService : BaseTileService() {
 
     override fun onClick() {
         if (isFeatureEnabled()) {
-            devSettings.setSystemInt(SYS_ADB_ENABLED, 0)
+            devSettings.setGlobalInt(SYS_ADB_ENABLED, 0)
         } else {
-            devSettings.setSystemInt(SYS_ADB_ENABLED, 1)
+            devSettings.setGlobalInt(SYS_ADB_ENABLED, 1)
         }
         refresh()
     }
 
     private fun isFeatureEnabled(): Boolean {
-        return devSettings.getSystemInt(SYS_ADB_ENABLED) == 1
+        return devSettings.getGlobalInt(SYS_ADB_ENABLED) == 1
     }
 }
