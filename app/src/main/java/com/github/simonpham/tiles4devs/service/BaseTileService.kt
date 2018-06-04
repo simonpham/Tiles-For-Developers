@@ -10,7 +10,6 @@ import com.github.simonpham.tiles4devs.SingletonInstances
 
 abstract class BaseTileService : TileService() {
 
-    protected val appContext = SingletonInstances.getAppContext()
     protected val devSettings = SingletonInstances.getDevSettings()
 
     override fun onStartListening() {
