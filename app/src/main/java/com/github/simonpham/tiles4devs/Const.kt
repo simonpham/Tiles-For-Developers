@@ -5,14 +5,18 @@ package com.github.simonpham.tiles4devs
  * Email: simonpham.dn@gmail.com
  */
 
+// rootless settings
 const val SYSPROP_ADB_PORT = "service.adb.tcp.port"
 const val SYSPROP_DEBUG_FORCE_RTL = "debug.force_rtl"
 const val SYSPROP_DEBUG_GPU_OVERDRAW = "debug.hwui.overdraw"
 const val SYSPROP_DEBUG_GPU_PROFILE = "debug.hwui.profile"
 const val SYSPROP_DEBUG_LAYOUT = "debug.layout"
-const val SYSPROP_DEMO_MODE_ALLOWED = "sysui_demo_allowed"
-const val SYSPROP_DEMO_MODE_ON = "sysui_tuner_demo_on"
-const val SYSPROP_SHOW_TAPS = "show_touches"
+
+// settings require write secure settings permission
+const val SYS_ANIMATOR_DURATION_SCALE = "animator_duration_scale"
+const val SYS_DEMO_MODE_ALLOWED = "sysui_demo_allowed"
+const val SYS_DEMO_MODE_ON = "sysui_tuner_demo_on"
+const val SYS_SHOW_TAPS = "show_touches"
 
 const val PAGE_COUNT = 4
 const val PAGE_WELCOME = 0

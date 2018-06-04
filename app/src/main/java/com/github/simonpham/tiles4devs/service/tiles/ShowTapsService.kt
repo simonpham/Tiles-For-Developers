@@ -1,7 +1,7 @@
 package com.github.simonpham.tiles4devs.service.tiles
 
 import android.service.quicksettings.Tile
-import com.github.simonpham.tiles4devs.SYSPROP_SHOW_TAPS
+import com.github.simonpham.tiles4devs.SYS_SHOW_TAPS
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
@@ -18,14 +18,14 @@ class ShowTapsService : BaseTileService() {
 
     override fun onClick() {
         if (isFeatureEnabled()) {
-            devSettings.setSystemInt(SYSPROP_SHOW_TAPS, 0)
+            devSettings.setSystemInt(SYS_SHOW_TAPS, 0)
         } else {
-            devSettings.setSystemInt(SYSPROP_SHOW_TAPS, 1)
+            devSettings.setSystemInt(SYS_SHOW_TAPS, 1)
         }
         refresh()
     }
 
     private fun isFeatureEnabled(): Boolean {
-        return devSettings.getSystemInt(SYSPROP_SHOW_TAPS) == 1
+        return devSettings.getSystemInt(SYS_SHOW_TAPS) == 1
     }
 }

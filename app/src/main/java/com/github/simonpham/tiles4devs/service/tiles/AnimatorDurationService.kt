@@ -50,7 +50,7 @@ class AnimatorDurationService : BaseTileService() {
 
     @Suppress("DEPRECATION")
     private fun getDialog(selectedIndex: Int): AlertDialog {
-        val dialog = AlertDialog.Builder(ContextThemeWrapper(appContext, R.style.AppTheme_Dialog))
+        val dialog = AlertDialog.Builder(ContextThemeWrapper(this, R.style.AppTheme_Dialog))
                 .setTitle(R.string.tile_animator_duration)
                 .setSingleChoiceItems(choices, selectedIndex, { dialog, which ->
                     AnimatorDurationScaler.setAnimatorScale(devSettings, scales[which])
