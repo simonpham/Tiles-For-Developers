@@ -1,7 +1,7 @@
 package com.github.simonpham.tiles4devs.service.tiles
 
 import android.service.quicksettings.Tile
-import com.github.simonpham.tiles4devs.SYS_ADB_ENABLED
+import com.github.simonpham.tiles4devs.GLOBAL_ADB_ENABLED
 import com.github.simonpham.tiles4devs.service.BaseTileService
 
 /**
@@ -18,14 +18,14 @@ class UsbDebuggingService : BaseTileService() {
 
     override fun onClick() {
         if (isFeatureEnabled()) {
-            devSettings.setGlobalInt(SYS_ADB_ENABLED, 0)
+            devSettings.setGlobalInt(GLOBAL_ADB_ENABLED, 0)
         } else {
-            devSettings.setGlobalInt(SYS_ADB_ENABLED, 1)
+            devSettings.setGlobalInt(GLOBAL_ADB_ENABLED, 1)
         }
         refresh()
     }
 
     private fun isFeatureEnabled(): Boolean {
-        return devSettings.getGlobalInt(SYS_ADB_ENABLED) == 1
+        return devSettings.getGlobalInt(GLOBAL_ADB_ENABLED) == 1
     }
 }
