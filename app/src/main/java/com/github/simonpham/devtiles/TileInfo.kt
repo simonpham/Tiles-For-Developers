@@ -23,6 +23,12 @@ enum class TileInfo(
             tileIcon = R.drawable.tile_icon_adb,
             isTileEnabled = true
     ),
+    TILE_CAFFEINE(
+            title = R.string.tile_caffeine,
+            description = R.string.tile_caffeine,
+            tileIcon = R.drawable.tile_icon_caffeine,
+            isTileEnabled = true
+    ),
     ;
 
     override fun getTitle(resources: Resources): String {

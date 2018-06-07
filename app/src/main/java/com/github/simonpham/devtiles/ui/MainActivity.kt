@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         val adapterModels = mutableListOf<AdapterModel>()
         adapterModels.add(HeaderModel("Non-root tiles"))
         adapterModels.addAll(TileInfo.values().map {
-            TileModel(it.getTitle(resources), it.getDescription(resources), it.getIcon(resources), it.isTileEnabled)
+            TileModel(it)
         })
         return adapterModels
     }

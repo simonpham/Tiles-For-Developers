@@ -1,8 +1,8 @@
 package com.github.simonpham.devtiles.ui
 
-import android.graphics.drawable.Drawable
 import android.view.View
 import com.github.simonpham.devtiles.R
+import com.github.simonpham.devtiles.TileInfo
 import com.github.simonpham.devtiles.ui.common.AdapterModel
 import com.github.simonpham.devtiles.ui.common.CustomViewHolder
 import com.github.simonpham.devtiles.ui.common.ViewHolderFactory
@@ -13,11 +13,7 @@ import kotlinx.android.synthetic.main.item_tile_toggle.view.*
  * Email: simonpham.dn@gmail.com
  */
 
-data class TileModel(
-        val title: String,
-        val description: String,
-        val icon: Drawable,
-        val isTileEnabled: Boolean) : AdapterModel
+data class TileModel(val tile: TileInfo) : AdapterModel
 
 class ItemTileToggleViewHolder(
         itemView: View,
@@ -45,10 +41,10 @@ class ItemTileToggleViewHolder(
 
     override fun bind(model: TileModel, pos: Int) {
         model.apply {
-            tvTitle.text = title
-            tvDescription.text = description
-            ivIcon.setImageDrawable(icon)
-            swEnabled.isChecked = isTileEnabled
+            tvTitle.text = tile.getTitle(context.resources)
+            tvDescription.text = tile.getDescription(context.resources)
+            ivIcon.setImageDrawable(tile.getIcon(context.resources))
+            swEnabled.isChecked = tile.isTileEnabled
         }
     }
 }
