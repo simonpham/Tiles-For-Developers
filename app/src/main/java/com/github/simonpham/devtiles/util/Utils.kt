@@ -3,6 +3,7 @@ package com.github.simonpham.devtiles.util
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Looper
 import com.github.simonpham.devtiles.R
 
 /**
@@ -23,4 +24,8 @@ fun openPlayStore(context: Context, packageName: String) {
         openUrl(context, "https://play.google.com/store/apps/details?id=$packageName",
                 context.getString(R.string.open_play_store))
     }
+}
+
+fun checkMainThread(method: String) {
+    check(Looper.myLooper() == Looper.getMainLooper()) { "Must call $method on main thread" }
 }
