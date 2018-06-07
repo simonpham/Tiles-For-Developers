@@ -8,7 +8,7 @@ apply plugin: 'kotlin-android-extensions'
 
 
 def buildTimestamp() {
-    return (System.currentTimeMillis()/1000).toInteger()
+    return (System.currentTimeMillis() / 1000).toInteger()
 }
 
 def buildTime() {
