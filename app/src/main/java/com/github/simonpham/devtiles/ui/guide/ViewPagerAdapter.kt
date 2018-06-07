@@ -1,13 +1,13 @@
-package com.github.simonpham.devtiles.ui
+package com.github.simonpham.devtiles.ui.guide
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.github.simonpham.devtiles.*
-import com.github.simonpham.devtiles.ui.guide.AddTileGuideFragment
-import com.github.simonpham.devtiles.ui.guide.RequestPermissionFragment
-import com.github.simonpham.devtiles.ui.guide.StartDevelopingFragment
-import com.github.simonpham.devtiles.ui.guide.WelcomeFragment
+import com.github.simonpham.devtiles.ui.guide.board.AddTileGuideFragment
+import com.github.simonpham.devtiles.ui.guide.board.RequestPermissionFragment
+import com.github.simonpham.devtiles.ui.guide.board.StartDevelopingFragment
+import com.github.simonpham.devtiles.ui.guide.board.WelcomeFragment
 
 /**
  * Created by Simon Pham on 6/1/18.

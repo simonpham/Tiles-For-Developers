@@ -1,4 +1,4 @@
-package com.github.simonpham.devtiles.ui
+package com.github.simonpham.devtiles.ui.guide
 
 import android.animation.ArgbEvaluator
 import android.os.Bundle

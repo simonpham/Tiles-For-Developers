@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PagerActivity$PlaceholderFragment">
+    tools:context=".ui.guide.PagerActivity$PlaceholderFragment">
 
     <TextView
         android:id="@+id/section_label"
