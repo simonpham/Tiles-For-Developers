@@ -1,5 +1,6 @@
 package com.github.simonpham.devtiles.ui
 
+import android.graphics.drawable.Drawable
 import android.view.View
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.ui.common.AdapterModel
@@ -12,13 +13,27 @@ import kotlinx.android.synthetic.main.item_tile_toggle.view.*
  * Email: simonpham.dn@gmail.com
  */
 
-data class Tile(val title: String, val description: String, val icon: Int, val isTileEnabled: Boolean) : AdapterModel
+data class TileModel(
+        val title: String,
+        val description: String,
+        val icon: Drawable,
+        val isTileEnabled: Boolean) : AdapterModel
 
-class ItemTileToggleViewHolder(itemView: View) : CustomViewHolder<Tile>(itemView) {
+class ItemTileToggleViewHolder(
+        itemView: View,
+        onClick: (TileModel) -> Unit
+) : CustomViewHolder<TileModel>(itemView) {
 
-    class Factory : ViewHolderFactory {
+    class Factory(init: Factory.() -> Unit) : ViewHolderFactory {
         override val layoutRes: Int = R.layout.item_tile_toggle
-        override fun create(itemView: View): CustomViewHolder<*> = ItemTileToggleViewHolder(itemView)
+        lateinit var onClick: (TileModel) -> Unit
+
+        init {
+            init()
+        }
+
+        override fun create(itemView: View): CustomViewHolder<*> = ItemTileToggleViewHolder(itemView, onClick)
+
     }
 
     private val context = itemView.context
@@ -28,11 +43,11 @@ class ItemTileToggleViewHolder(itemView: View) : CustomViewHolder<Tile>(itemView
     private val ivIcon = itemView.ivIcon
     private val swEnabled = itemView.swEnable
 
-    override fun bind(model: Tile, pos: Int) {
+    override fun bind(model: TileModel, pos: Int) {
         model.apply {
             tvTitle.text = title
             tvDescription.text = description
-            ivIcon.setImageResource(icon)
+            ivIcon.setImageDrawable(icon)
             swEnabled.isChecked = isTileEnabled
         }
     }
