@@ -17,6 +17,18 @@
     <string name="tile_strict_mode_disabled">Strict mode disabled</string>
     <string name="tile_usb_debugging">USB debugging</string>
 
+    <string name="tile_demo_mode_desc">Makes it easier to take clean screenshots by displaying a generic, preset notification bar that does not show notifications or low battery warnings</string>
+    <string name="tile_debug_gpu_overdraw_desc">Displays color-coding on your device so you can visualize how how many times the same pixel has been drawn in the same frame. The visualization shows where your app might be doing more rendering than necessary</string>
+    <string name="tile_show_layout_bounds_desc">Show Layout Bounds to show your app\'s clip bounds, margins, and other user interface constructions on the device</string>
+    <string name="tile_force_rtl_layout_desc">Forces screen layout direction to be from right to left (RTL) or from left to right (default)</string>
+    <string name="tile_profile_gpu_rendering_desc">The Profile GPU Rendering tool displays, as a scrolling histogram, a visual representation of how much time it takes to render the frames of a UI window relative to a benchmark of 16ms per frame</string>
+    <string name="tile_adb_over_network_desc">ADB over network option helps to connect your device to ADB bridge without the need for USB cable</string>
+    <string name="tile_caffeine_desc">Caffeine was a simple tile in your Quick Settings panel that you could switch on to keep you screen on for at least five minutes after being idle</string>
+    <string name="tile_show_taps_desc">Show taps to display taps when you touch the screen</string>
+    <string name="tile_animator_duration_desc">Sets the animator playback speed so you can check its performance at different speeds. A lower scale results in a faster speed</string>
+    <string name="tile_strict_mode_desc">StrictMode is a developer tool which detects things you might be doing by accident and brings them to your attention so you can fix them</string>
+    <string name="tile_usb_debugging_desc">Enable USB debugging (figure 3) so your Android device can communicate with your development machine through Android Debug Bridge (adb)</string>
+
     <string name="toast_permission_required">Please grant permission!</string>
 
     <string name="title_getting_started">Getting Started</string>
