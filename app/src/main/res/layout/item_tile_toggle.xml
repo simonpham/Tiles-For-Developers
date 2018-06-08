@@ -4,22 +4,31 @@
     xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_small">
+    android:layout_marginBottom="@dimen/margin_tiny"
+    android:layout_marginEnd="@dimen/margin_small"
+    android:layout_marginStart="@dimen/margin_small"
+    android:layout_marginTop="@dimen/margin_tiny">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_normal">
+        android:layout_marginBottom="@dimen/margin_tiny"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_tiny">
 
         <ImageView
             android:id="@+id/ivIcon"
-            android:layout_width="?actionBarSize"
-            android:layout_height="?actionBarSize"
+            android:layout_width="@dimen/item_tile_icon"
+            android:layout_height="@dimen/item_tile_icon"
+            android:padding="@dimen/margin_tiny"
+            android:scaleType="fitCenter"
+            android:tint="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tool:src="@drawable/tile_icon_show_layout"
-            tool:tint="@color/colorAccent" />
+            tool:src="@drawable/tile_icon_animator_duration" />
 
         <TextView
             android:id="@+id/tvTitle"
@@ -43,7 +52,6 @@
             android:layout_marginStart="@dimen/margin_small"
             android:ellipsize="end"
             android:maxLines="2"
-            android:minLines="2"
             android:textAppearance="?android:textAppearanceListItemSecondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/swEnable"
