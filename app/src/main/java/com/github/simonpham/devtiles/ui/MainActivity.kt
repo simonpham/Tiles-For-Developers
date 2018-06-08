@@ -2,6 +2,8 @@ package com.github.simonpham.devtiles.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.TileInfo
 import com.github.simonpham.devtiles.ui.common.AdapterModel
@@ -30,6 +32,25 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
         adapter.setData(makeAdapterData())
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_action, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_refresh -> {
+                // refresh
+                return true
+            }
+            R.id.menu_settings -> {
+                // settings
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
     }
 
     private fun makeAdapterData(): List<AdapterModel> {
