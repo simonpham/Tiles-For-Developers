@@ -1,5 +1,6 @@
 package com.github.simonpham.devtiles.ui
 
+import android.support.v7.widget.TooltipCompat
 import android.view.View
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.TileInfo
@@ -43,6 +44,7 @@ class ItemTileToggleViewHolder(
         model.apply {
             tvTitle.text = tile.getTitle(context.resources)
             tvDescription.text = tile.getDescription(context.resources)
+            TooltipCompat.setTooltipText(tvDescription, tile.getDescription(context.resources))
             ivIcon.setImageDrawable(tile.getIcon(context.resources))
             swEnabled.isChecked = tile.isTileEnabled
         }
