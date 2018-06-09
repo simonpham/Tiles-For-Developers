@@ -1,4 +1,4 @@
-package com.github.simonpham.devtiles.ui
+package com.github.simonpham.devtiles.ui.home
 
 import android.view.View
 import androidx.appcompat.widget.TooltipCompat
@@ -30,8 +30,6 @@ class ItemTileToggleViewHolder(
     private val ivIcon = itemView.ivIcon
     private val swEnabled = itemView.swEnable
 
-    private var model: TileModel? = null
-
     class Factory : ViewHolderFactory {
         override val layoutRes: Int = R.layout.item_tile_toggle
         override fun create(itemView: View): CustomViewHolder<*> = ItemTileToggleViewHolder(itemView)
@@ -39,12 +37,13 @@ class ItemTileToggleViewHolder(
     }
 
     override fun bind(model: TileModel, pos: Int) {
-        this.model = model
         model.apply {
             tvTitle.text = tile.getTitle(context.resources)
             tvDescription.text = tile.getDescription(context.resources)
-            TooltipCompat.setTooltipText(vRoot, tile.getDescription(context.resources))
             ivIcon.setImageDrawable(tile.getIcon(context.resources))
+
+            TooltipCompat.setTooltipText(vRoot, tile.getDescription(context.resources))
+
             swEnabled.setOnCheckedChangeListener(null)
             swEnabled.isChecked = isComponentEnabled(tile.tileClass)
             swEnabled.setOnCheckedChangeListener { _, _ ->

@@ -1,4 +1,4 @@
-package com.github.simonpham.devtiles.ui
+package com.github.simonpham.devtiles.ui.home
 
 import android.os.Bundle
 import android.view.Menu
