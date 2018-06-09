@@ -3,7 +3,7 @@ package com.github.simonpham.devtiles;
 import android.os.AsyncTask;
 import android.os.IBinder;
 import android.os.Parcel;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import java.lang.reflect.InvocationTargetException;

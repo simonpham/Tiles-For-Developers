@@ -1,8 +1,8 @@
 package com.github.simonpham.devtiles.ui.guide
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import com.github.simonpham.devtiles.*
 import com.github.simonpham.devtiles.ui.guide.board.AddTileGuideFragment
 import com.github.simonpham.devtiles.ui.guide.board.RequestPermissionFragment
@@ -14,9 +14,9 @@ import com.github.simonpham.devtiles.ui.guide.board.WelcomeFragment
  * Email: simonpham.dn@gmail.com
  */
 
-class ViewPagerAdapter internal constructor(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class ViewPagerAdapter internal constructor(fm: androidx.fragment.app.FragmentManager) : androidx.fragment.app.FragmentPagerAdapter(fm) {
 
-    override fun getItem(position: Int): Fragment? {
+    override fun getItem(position: Int): androidx.fragment.app.Fragment? {
         return when (position) {
             PAGE_WELCOME -> WelcomeFragment()
             PAGE_REQUEST_PERMISSION -> RequestPermissionFragment()

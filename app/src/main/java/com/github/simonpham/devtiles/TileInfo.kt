@@ -2,9 +2,9 @@ package com.github.simonpham.devtiles
 
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
-import android.support.annotation.DrawableRes
-import android.support.annotation.StringRes
-import android.support.v4.content.res.ResourcesCompat
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.core.content.res.ResourcesCompat
 
 /**
  * Created by Simon Pham on 6/8/18.

@@ -1,7 +1,7 @@
 package com.github.simonpham.devtiles.ui.guide.board
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_welcome.*
  * Email: simonpham.dn@gmail.com
  */
 
-class WelcomeFragment : Fragment() {
+class WelcomeFragment : androidx.fragment.app.Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

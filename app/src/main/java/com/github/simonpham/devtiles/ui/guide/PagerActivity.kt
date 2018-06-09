@@ -2,9 +2,9 @@ package com.github.simonpham.devtiles.ui.guide
 
 import android.animation.ArgbEvaluator
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
 import com.github.simonpham.devtiles.PAGE_COUNT
@@ -41,7 +41,7 @@ class PagerActivity : AppCompatActivity(), View.OnClickListener {
 
         indicators = arrayOf(intro_indicator_0, intro_indicator_1, intro_indicator_2, intro_indicator_3)
 
-        viewPager.addOnPageChangeListener((object : ViewPager.OnPageChangeListener {
+        viewPager.addOnPageChangeListener((object : androidx.viewpager.widget.ViewPager.OnPageChangeListener {
 
             override fun onPageScrollStateChanged(state: Int) {}
 

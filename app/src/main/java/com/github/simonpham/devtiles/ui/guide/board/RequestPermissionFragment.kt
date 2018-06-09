@@ -1,7 +1,7 @@
 package com.github.simonpham.devtiles.ui.guide.board
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +21,7 @@ import org.jetbrains.anko.uiThread
  * Email: simonpham.dn@gmail.com
  */
 
-class RequestPermissionFragment : Fragment() {
+class RequestPermissionFragment : androidx.fragment.app.Fragment() {
 
     private var isSuAvailable: Boolean = false
     private var isMagicAvailable: Boolean = false

@@ -1,8 +1,8 @@
 package com.github.simonpham.devtiles.ui.common
 
-import android.support.annotation.LayoutRes
-import android.support.v7.util.DiffUtil
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.LayoutRes
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
@@ -28,7 +28,7 @@ data class ItemType(
 
 class MixAdapter(
         private val mapModelClassItemType: Map<Class<out AdapterModel>, ItemType>
-) : RecyclerView.Adapter<CustomViewHolder<*>>(), ItemTouchHelperAdapter {
+) : androidx.recyclerview.widget.RecyclerView.Adapter<CustomViewHolder<*>>(), ItemTouchHelperAdapter {
 
     private var layoutInflater: LayoutInflater? = null
     private val itemDataList = mutableListOf<AdapterModel>()

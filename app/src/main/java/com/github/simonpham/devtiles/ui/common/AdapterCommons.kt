@@ -1,6 +1,6 @@
 package com.github.simonpham.devtiles.ui.common
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicLong
@@ -16,7 +16,7 @@ interface HasIdLong {
     val idLong: Long
 }
 
-abstract class CustomViewHolder<in T : AdapterModel>(itemView: View) : RecyclerView.ViewHolder(itemView) {
+abstract class CustomViewHolder<in T : AdapterModel>(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
     abstract fun bind(model: T, pos: Int)
 
     open fun onAttachedToWindow() = Unit
