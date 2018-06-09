@@ -55,10 +55,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun makeAdapterData(): List<AdapterModel> {
         val adapterModels = mutableListOf<AdapterModel>()
+
+        val nonRootTiles = mutableListOf<TileInfo>()
+        val magicTiles = mutableListOf<TileInfo>()
+
+        TileInfo.values().forEach { tile ->
+            if (tile.isMagicRequired) {
+                magicTiles.add(tile)
+            } else {
+                nonRootTiles.add(tile)
+            }
+        }
+
         adapterModels.add(HeaderModel("Non-root tiles"))
-        adapterModels.addAll(TileInfo.values().map {
+        adapterModels.addAll(nonRootTiles.map {
             TileModel(it)
         })
+
+        adapterModels.add(HeaderModel("Magic-required tiles"))
+        adapterModels.addAll(magicTiles.map {
+            TileModel(it)
+        })
+
         return adapterModels
     }
 
