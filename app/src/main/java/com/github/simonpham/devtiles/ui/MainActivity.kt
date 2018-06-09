@@ -6,13 +6,10 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.TileInfo
-import com.github.simonpham.devtiles.service.tiles.AdbOverNetworkService
 import com.github.simonpham.devtiles.ui.common.AdapterModel
 import com.github.simonpham.devtiles.ui.common.HeaderModel
 import com.github.simonpham.devtiles.ui.common.ItemHeaderViewHolder
 import com.github.simonpham.devtiles.ui.common.MixAdapter
-import com.github.simonpham.devtiles.util.isComponentEnabled
-import com.github.simonpham.devtiles.util.toggleComponent
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -20,11 +17,7 @@ class MainActivity : AppCompatActivity() {
     private val adapter: MixAdapter by lazy {
         MixAdapter.Builder {
             withModel<HeaderModel> { ItemHeaderViewHolder.Factory() }
-            withModel<TileModel> {
-                ItemTileToggleViewHolder.Factory {
-                    onSwitch = { onTileSwitch(it) }
-                }
-            }
+            withModel<TileModel> { ItemTileToggleViewHolder.Factory() }
         }.build()
     }
 
@@ -81,9 +74,5 @@ class MainActivity : AppCompatActivity() {
         })
 
         return adapterModels
-    }
-
-    private fun onTileSwitch(tile: TileModel) {
-        toggleComponent(tile.tile.tileClass, isComponentEnabled(tile.tile.tileClass))
     }
 }
