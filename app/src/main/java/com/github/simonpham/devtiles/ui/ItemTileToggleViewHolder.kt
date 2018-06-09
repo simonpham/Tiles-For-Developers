@@ -19,20 +19,8 @@ data class TileModel(val tile: TileInfo) : AdapterModel
 
 class ItemTileToggleViewHolder(
         itemView: View,
-        onClick: (TileModel) -> Unit
+        onSwitch: (TileModel) -> Unit
 ) : CustomViewHolder<TileModel>(itemView) {
-
-    class Factory(init: Factory.() -> Unit) : ViewHolderFactory {
-        override val layoutRes: Int = R.layout.item_tile_toggle
-        lateinit var onClick: (TileModel) -> Unit
-
-        init {
-            init()
-        }
-
-        override fun create(itemView: View): CustomViewHolder<*> = ItemTileToggleViewHolder(itemView, onClick)
-
-    }
 
     private val context = itemView.context
 
@@ -42,7 +30,28 @@ class ItemTileToggleViewHolder(
     private val ivIcon = itemView.ivIcon
     private val swEnabled = itemView.swEnable
 
+    private var model: TileModel? = null
+
+    class Factory(init: Factory.() -> Unit) : ViewHolderFactory {
+        override val layoutRes: Int = R.layout.item_tile_toggle
+        lateinit var onSwitch: (TileModel) -> Unit
+
+        init {
+            init()
+        }
+
+        override fun create(itemView: View): CustomViewHolder<*> = ItemTileToggleViewHolder(itemView, onSwitch)
+
+    }
+
+    init {
+        swEnabled.setOnCheckedChangeListener { _, _ ->
+            onSwitch.invoke(model!!)
+        }
+    }
+
     override fun bind(model: TileModel, pos: Int) {
+        this.model = model
         model.apply {
             val isTileEnabled = isComponentEnabled(tile.tileClass)
 

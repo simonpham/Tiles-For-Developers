@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.TileInfo
+import com.github.simonpham.devtiles.service.tiles.AdbOverNetworkService
 import com.github.simonpham.devtiles.ui.common.AdapterModel
 import com.github.simonpham.devtiles.ui.common.HeaderModel
 import com.github.simonpham.devtiles.ui.common.ItemHeaderViewHolder
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             withModel<HeaderModel> { ItemHeaderViewHolder.Factory() }
             withModel<TileModel> {
                 ItemTileToggleViewHolder.Factory {
-                    onClick = { onSwitch(it) }
+                    onSwitch = { onTileSwitch(it) }
                 }
             }
         }.build()
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         return adapterModels
     }
 
-    private fun onSwitch(tile: TileModel) {
+    private fun onTileSwitch(tile: TileModel) {
         toggleComponent(tile.tile.tileClass, isComponentEnabled(tile.tile.tileClass))
     }
 }

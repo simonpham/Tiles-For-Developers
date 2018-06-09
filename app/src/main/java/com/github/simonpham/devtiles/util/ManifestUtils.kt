@@ -15,9 +15,9 @@ fun toggleComponent(component: Class<*>, state: Boolean) {
     val packageManager = SingletonInstances.getPackageManager()
 
     val newState = if (state) {
-        PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-    } else {
         PackageManager.COMPONENT_ENABLED_STATE_DISABLED
+    } else {
+        PackageManager.COMPONENT_ENABLED_STATE_ENABLED
     }
     packageManager.setComponentEnabledSetting(componentName, newState, PackageManager.DONT_KILL_APP)
 }
