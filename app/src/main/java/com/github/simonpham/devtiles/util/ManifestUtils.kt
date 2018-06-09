@@ -9,7 +9,7 @@ import com.github.simonpham.devtiles.SingletonInstances
  * Email: simonpham.dn@gmail.com
  */
 
-fun toggleComponent(component: Class<Any>, state: Boolean) {
+fun toggleComponent(component: Class<*>, state: Boolean) {
     val context = SingletonInstances.getAppContext()
     val componentName = ComponentName(context, component)
     val packageManager = SingletonInstances.getPackageManager()
@@ -22,7 +22,7 @@ fun toggleComponent(component: Class<Any>, state: Boolean) {
     packageManager.setComponentEnabledSetting(componentName, newState, PackageManager.DONT_KILL_APP)
 }
 
-fun isComponentEnabled(component: Class<Any>): Boolean {
+fun isComponentEnabled(component: Class<*>): Boolean {
     val context = SingletonInstances.getAppContext()
     val componentName = ComponentName(context, component)
     val packageManager = SingletonInstances.getPackageManager()
