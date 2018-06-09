@@ -1,12 +1,13 @@
 package com.github.simonpham.devtiles.ui
 
-import androidx.appcompat.widget.TooltipCompat
 import android.view.View
+import androidx.appcompat.widget.TooltipCompat
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.TileInfo
 import com.github.simonpham.devtiles.ui.common.AdapterModel
 import com.github.simonpham.devtiles.ui.common.CustomViewHolder
 import com.github.simonpham.devtiles.ui.common.ViewHolderFactory
+import com.github.simonpham.devtiles.util.isComponentEnabled
 import kotlinx.android.synthetic.main.item_tile_toggle.view.*
 
 /**
@@ -43,11 +44,13 @@ class ItemTileToggleViewHolder(
 
     override fun bind(model: TileModel, pos: Int) {
         model.apply {
+            val isTileEnabled = isComponentEnabled(tile.tileClass)
+
             tvTitle.text = tile.getTitle(context.resources)
             tvDescription.text = tile.getDescription(context.resources)
             TooltipCompat.setTooltipText(vRoot, tile.getDescription(context.resources))
             ivIcon.setImageDrawable(tile.getIcon(context.resources))
-            swEnabled.isChecked = tile.isTileEnabled
+            swEnabled.isChecked = isTileEnabled
         }
     }
 }

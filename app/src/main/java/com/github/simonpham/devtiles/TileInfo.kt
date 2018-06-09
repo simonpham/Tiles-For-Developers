@@ -17,7 +17,6 @@ enum class TileInfo(
         @StringRes val title: Int,
         @StringRes val description: Int,
         @DrawableRes val tileIcon: Int,
-        val isTileEnabled: Boolean,
         val isMagicRequired: Boolean
 ) : TileToggle {
     TILE_ADB_WIFI(
@@ -25,7 +24,6 @@ enum class TileInfo(
             title = R.string.tile_adb_over_network,
             description = R.string.tile_adb_over_network_desc,
             tileIcon = R.drawable.tile_icon_adb_on,
-            isTileEnabled = true,
             isMagicRequired = false
     ),
     TILE_ANIMATOR_DURATION(
@@ -33,7 +31,6 @@ enum class TileInfo(
             title = R.string.tile_animator_duration,
             description = R.string.tile_animator_duration_desc,
             tileIcon = R.drawable.tile_icon_animator_duration,
-            isTileEnabled = true,
             isMagicRequired = true
     ),
     TILE_CAFFEINE(
@@ -41,7 +38,6 @@ enum class TileInfo(
             title = R.string.tile_caffeine,
             description = R.string.tile_caffeine_desc,
             tileIcon = R.drawable.tile_icon_caffeine,
-            isTileEnabled = true,
             isMagicRequired = false
     ),
     TILE_DEBUG_GPU(
@@ -49,7 +45,6 @@ enum class TileInfo(
             title = R.string.tile_debug_gpu_overdraw,
             description = R.string.tile_debug_gpu_overdraw_desc,
             tileIcon = R.drawable.tile_icon_debug_overdraw,
-            isTileEnabled = true,
             isMagicRequired = false
     ),
     TILE_DEMO_MODE(
@@ -57,7 +52,6 @@ enum class TileInfo(
             title = R.string.tile_demo_mode,
             description = R.string.tile_demo_mode_desc,
             tileIcon = R.drawable.tile_icon_demo_mode,
-            isTileEnabled = true,
             isMagicRequired = true
     ),
     TILE_FORCE_RTL(
@@ -65,7 +59,6 @@ enum class TileInfo(
             title = R.string.tile_force_rtl_layout,
             description = R.string.tile_force_rtl_layout_desc,
             tileIcon = R.drawable.tile_icon_force_rtl,
-            isTileEnabled = true,
             isMagicRequired = false
     ),
     TILE_PROFILE_GPU(
@@ -73,7 +66,6 @@ enum class TileInfo(
             title = R.string.tile_profile_gpu_rendering,
             description = R.string.tile_profile_gpu_rendering_desc,
             tileIcon = R.drawable.tile_icon_graphics,
-            isTileEnabled = true,
             isMagicRequired = false
     ),
     TILE_DEBUG_LAYOUT(
@@ -81,7 +73,6 @@ enum class TileInfo(
             title = R.string.tile_show_layout_bounds,
             description = R.string.tile_show_layout_bounds_desc,
             tileIcon = R.drawable.tile_icon_show_layout,
-            isTileEnabled = true,
             isMagicRequired = false
     ),
     TILE_SHOW_TAPS(
@@ -89,7 +80,6 @@ enum class TileInfo(
             title = R.string.tile_show_taps,
             description = R.string.tile_show_taps_desc,
             tileIcon = R.drawable.tile_icon_show_taps,
-            isTileEnabled = true,
             isMagicRequired = true
     ),
     TILE_STRICT_MODE(
@@ -97,7 +87,6 @@ enum class TileInfo(
             title = R.string.tile_strict_mode,
             description = R.string.tile_strict_mode_desc,
             tileIcon = R.drawable.tile_icon_strict_mode,
-            isTileEnabled = true,
             isMagicRequired = false
     ),
     TILE_USB_DEBUGGING(
@@ -105,7 +94,6 @@ enum class TileInfo(
             title = R.string.tile_usb_debugging,
             description = R.string.tile_usb_debugging_desc,
             tileIcon = R.drawable.tile_icon_adb,
-            isTileEnabled = true,
             isMagicRequired = true
     ),
     ;
