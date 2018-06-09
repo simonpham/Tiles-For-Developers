@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.res.ResourcesCompat
+import com.github.simonpham.devtiles.service.tiles.*
 
 /**
  * Created by Simon Pham on 6/8/18.
@@ -12,6 +13,7 @@ import androidx.core.content.res.ResourcesCompat
  */
 
 enum class TileInfo(
+        val tileClass: Class<*>,
         @StringRes val title: Int,
         @StringRes val description: Int,
         @DrawableRes val tileIcon: Int,
@@ -19,6 +21,7 @@ enum class TileInfo(
         val isMagicRequired: Boolean
 ) : TileToggle {
     TILE_ADB_WIFI(
+            tileClass = AdbOverNetworkService::class.java,
             title = R.string.tile_adb_over_network,
             description = R.string.tile_adb_over_network_desc,
             tileIcon = R.drawable.tile_icon_adb_on,
@@ -26,6 +29,7 @@ enum class TileInfo(
             isMagicRequired = false
     ),
     TILE_ANIMATOR_DURATION(
+            tileClass = AnimatorDurationService::class.java,
             title = R.string.tile_animator_duration,
             description = R.string.tile_animator_duration_desc,
             tileIcon = R.drawable.tile_icon_animator_duration,
@@ -33,6 +37,7 @@ enum class TileInfo(
             isMagicRequired = true
     ),
     TILE_CAFFEINE(
+            tileClass = CaffeineService::class.java,
             title = R.string.tile_caffeine,
             description = R.string.tile_caffeine_desc,
             tileIcon = R.drawable.tile_icon_caffeine,
@@ -40,6 +45,7 @@ enum class TileInfo(
             isMagicRequired = false
     ),
     TILE_DEBUG_GPU(
+            tileClass = DebugGpuOverdrawService::class.java,
             title = R.string.tile_debug_gpu_overdraw,
             description = R.string.tile_debug_gpu_overdraw_desc,
             tileIcon = R.drawable.tile_icon_debug_overdraw,
@@ -47,6 +53,7 @@ enum class TileInfo(
             isMagicRequired = false
     ),
     TILE_DEMO_MODE(
+            tileClass = DemoModeService::class.java,
             title = R.string.tile_demo_mode,
             description = R.string.tile_demo_mode_desc,
             tileIcon = R.drawable.tile_icon_demo_mode,
@@ -54,6 +61,7 @@ enum class TileInfo(
             isMagicRequired = true
     ),
     TILE_FORCE_RTL(
+            tileClass = ForceRtlLayoutService::class.java,
             title = R.string.tile_force_rtl_layout,
             description = R.string.tile_force_rtl_layout_desc,
             tileIcon = R.drawable.tile_icon_force_rtl,
@@ -61,6 +69,7 @@ enum class TileInfo(
             isMagicRequired = false
     ),
     TILE_PROFILE_GPU(
+            tileClass = ProfileGpuRenderingService::class.java,
             title = R.string.tile_profile_gpu_rendering,
             description = R.string.tile_profile_gpu_rendering_desc,
             tileIcon = R.drawable.tile_icon_graphics,
@@ -68,6 +77,7 @@ enum class TileInfo(
             isMagicRequired = false
     ),
     TILE_DEBUG_LAYOUT(
+            tileClass = ShowLayoutBoundsService::class.java,
             title = R.string.tile_show_layout_bounds,
             description = R.string.tile_show_layout_bounds_desc,
             tileIcon = R.drawable.tile_icon_show_layout,
@@ -75,6 +85,7 @@ enum class TileInfo(
             isMagicRequired = false
     ),
     TILE_SHOW_TAPS(
+            tileClass = ShowTapsService::class.java,
             title = R.string.tile_show_taps,
             description = R.string.tile_show_taps_desc,
             tileIcon = R.drawable.tile_icon_show_taps,
@@ -82,6 +93,7 @@ enum class TileInfo(
             isMagicRequired = true
     ),
     TILE_STRICT_MODE(
+            tileClass = StrictModeService::class.java,
             title = R.string.tile_strict_mode,
             description = R.string.tile_strict_mode_desc,
             tileIcon = R.drawable.tile_icon_strict_mode,
@@ -89,6 +101,7 @@ enum class TileInfo(
             isMagicRequired = false
     ),
     TILE_USB_DEBUGGING(
+            tileClass = UsbDebuggingService::class.java,
             title = R.string.tile_usb_debugging,
             description = R.string.tile_usb_debugging_desc,
             tileIcon = R.drawable.tile_icon_adb,
