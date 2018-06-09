@@ -35,6 +35,7 @@ class ItemTileToggleViewHolder(
 
     private val context = itemView.context
 
+    private val vRoot = itemView.rootView
     private val tvTitle = itemView.tvTitle
     private val tvDescription = itemView.tvDescription
     private val ivIcon = itemView.ivIcon
@@ -44,7 +45,7 @@ class ItemTileToggleViewHolder(
         model.apply {
             tvTitle.text = tile.getTitle(context.resources)
             tvDescription.text = tile.getDescription(context.resources)
-            TooltipCompat.setTooltipText(tvDescription, tile.getDescription(context.resources))
+            TooltipCompat.setTooltipText(vRoot, tile.getDescription(context.resources))
             ivIcon.setImageDrawable(tile.getIcon(context.resources))
             swEnabled.isChecked = tile.isTileEnabled
         }
