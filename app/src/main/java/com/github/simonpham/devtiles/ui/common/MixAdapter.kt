@@ -28,7 +28,7 @@ data class ItemType(
 
 class MixAdapter(
         private val mapModelClassItemType: Map<Class<out AdapterModel>, ItemType>
-) : androidx.recyclerview.widget.RecyclerView.Adapter<CustomViewHolder<*>>(), ItemTouchHelperAdapter {
+) : RecyclerView.Adapter<CustomViewHolder<*>>(), ItemTouchHelperAdapter {
 
     private var layoutInflater: LayoutInflater? = null
     private val itemDataList = mutableListOf<AdapterModel>()

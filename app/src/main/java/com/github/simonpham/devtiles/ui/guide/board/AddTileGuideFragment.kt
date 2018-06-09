@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_add_tile_guide.*
  * Email: simonpham.dn@gmail.com
  */
 
-class AddTileGuideFragment : androidx.fragment.app.Fragment() {
+class AddTileGuideFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_welcome.*
  * Email: simonpham.dn@gmail.com
  */
 
-class WelcomeFragment : androidx.fragment.app.Fragment() {
+class WelcomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

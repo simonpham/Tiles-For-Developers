@@ -41,7 +41,7 @@ class PagerActivity : AppCompatActivity(), View.OnClickListener {
 
         indicators = arrayOf(intro_indicator_0, intro_indicator_1, intro_indicator_2, intro_indicator_3)
 
-        viewPager.addOnPageChangeListener((object : androidx.viewpager.widget.ViewPager.OnPageChangeListener {
+        viewPager.addOnPageChangeListener((object : ViewPager.OnPageChangeListener {
 
             override fun onPageScrollStateChanged(state: Int) {}
 

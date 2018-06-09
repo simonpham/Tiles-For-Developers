@@ -16,7 +16,7 @@ interface HasIdLong {
     val idLong: Long
 }
 
-abstract class CustomViewHolder<in T : AdapterModel>(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+abstract class CustomViewHolder<in T : AdapterModel>(itemView: View) : RecyclerView.ViewHolder(itemView) {
     abstract fun bind(model: T, pos: Int)
 
     open fun onAttachedToWindow() = Unit

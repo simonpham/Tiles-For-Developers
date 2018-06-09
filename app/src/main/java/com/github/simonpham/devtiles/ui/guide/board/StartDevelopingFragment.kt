@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_start_developing.*
  * Email: simonpham.dn@gmail.com
  */
 
-class StartDevelopingFragment : androidx.fragment.app.Fragment() {
+class StartDevelopingFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

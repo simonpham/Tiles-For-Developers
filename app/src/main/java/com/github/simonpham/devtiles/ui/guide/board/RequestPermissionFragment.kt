@@ -21,7 +21,7 @@ import org.jetbrains.anko.uiThread
  * Email: simonpham.dn@gmail.com
  */
 
-class RequestPermissionFragment : androidx.fragment.app.Fragment() {
+class RequestPermissionFragment : Fragment() {
 
     private var isSuAvailable: Boolean = false
     private var isMagicAvailable: Boolean = false
