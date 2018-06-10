@@ -13,9 +13,14 @@
 
     <style name="AppTheme.Dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimary">@color/colorAccent</item>
         <item name="android:background">@color/white</item>
         <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Dialog.About" parent="AppTheme.Dialog">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
