@@ -18,16 +18,17 @@
         android:paddingBottom="@dimen/margin_normal">
 
         <TextView
+            android:id="@+id/tvVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Version"
+            android:text="@string/app_title"
             android:textAppearance="?textAppearanceListItem"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rate this app." />
+            android:text="@string/title_rate_this_app" />
 
     </LinearLayout>
 
@@ -47,14 +48,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="GitHub repository"
+            android:text="@string/title_github_repository"
             android:textAppearance="?textAppearanceListItem"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="https://github.com/simonpham/Tiles-For-Developers" />
+            android:text="@string/title_github_repo" />
 
     </LinearLayout>
 

@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.title = getString(R.string.app_title)
 
         recyclerView.adapter = adapter
 
@@ -72,12 +73,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        adapterModels.add(HeaderModel("Non-root tiles"))
+        adapterModels.add(HeaderModel(getString(R.string.header_rootless_tiles)))
         adapterModels.addAll(nonRootTiles.map {
             TileModel(it)
         })
 
-        adapterModels.add(HeaderModel("Magic-required tiles"))
+        adapterModels.add(HeaderModel(getString(R.string.header_magic_required_tiles)))
         adapterModels.addAll(magicTiles.map {
             TileModel(it)
         })
