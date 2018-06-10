@@ -4,18 +4,18 @@
     xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/margin_tiny"
-    android:layout_marginEnd="@dimen/margin_small"
     android:layout_marginStart="@dimen/margin_small"
-    android:layout_marginTop="@dimen/margin_tiny">
+    android:layout_marginTop="@dimen/margin_tiny"
+    android:layout_marginEnd="@dimen/margin_small"
+    android:layout_marginBottom="@dimen/margin_tiny">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/margin_tiny"
-        android:layout_marginEnd="@dimen/margin_small"
         android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginTop="@dimen/margin_tiny">
+        android:layout_marginTop="@dimen/margin_tiny"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_tiny">
 
         <ImageView
             android:id="@+id/ivIcon"
@@ -23,7 +23,6 @@
             android:layout_height="@dimen/item_tile_icon"
             android:padding="@dimen/margin_tiny"
             android:scaleType="fitCenter"
-            android:tint="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/tvTitle"
             app:layout_constraintStart_toStartOf="parent"

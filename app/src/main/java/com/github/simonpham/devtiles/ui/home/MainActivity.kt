@@ -13,6 +13,7 @@ import com.github.simonpham.devtiles.ui.common.ItemHeaderViewHolder
 import com.github.simonpham.devtiles.ui.common.MixAdapter
 import com.github.simonpham.devtiles.ui.guide.PagerActivity
 import com.github.simonpham.devtiles.util.showAboutDialog
+import com.github.simonpham.devtiles.util.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -46,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menu_settings -> {
                 // settings
+                toast("Not implemented!")
                 return true
             }
             R.id.menu_about -> {

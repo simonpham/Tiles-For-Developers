@@ -1,7 +1,10 @@
 package com.github.simonpham.devtiles.ui.home
 
+import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.appcompat.widget.TooltipCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.TileInfo
 import com.github.simonpham.devtiles.ui.common.AdapterModel
@@ -38,17 +41,29 @@ class ItemTileToggleViewHolder(
 
     override fun bind(model: TileModel, pos: Int) {
         model.apply {
-            tvTitle.text = tile.getTitle(context.resources)
-            tvDescription.text = tile.getDescription(context.resources)
-            ivIcon.setImageDrawable(tile.getIcon(context.resources))
-
-            TooltipCompat.setTooltipText(vRoot, tile.getDescription(context.resources))
-
             swEnabled.setOnCheckedChangeListener(null)
             swEnabled.isChecked = isComponentEnabled(tile.tileClass)
             swEnabled.setOnCheckedChangeListener { _, _ ->
                 toggleComponent(tile.tileClass, isComponentEnabled(tile.tileClass))
+                ivIcon.setImageDrawable(getTileIconDrawable(tile, isComponentEnabled(tile.tileClass)))
             }
+
+            tvTitle.text = tile.getTitle(context.resources)
+            tvDescription.text = tile.getDescription(context.resources)
+            ivIcon.setImageDrawable(getTileIconDrawable(tile, isComponentEnabled(tile.tileClass)))
+            TooltipCompat.setTooltipText(vRoot, tile.getDescription(context.resources))
         }
+    }
+
+    private fun getTileIconDrawable(tile: TileInfo, state: Boolean): Drawable {
+        val tileColor = if (state) {
+            ResourcesCompat.getColor(context.resources, R.color.colorAccent, null)
+        } else {
+            ResourcesCompat.getColor(context.resources, R.color.grey, null)
+        }
+        val drawable = tile.getIcon(context.resources)
+        val wrapDrawable = DrawableCompat.wrap(drawable)
+        DrawableCompat.setTint(wrapDrawable, tileColor)
+        return drawable
     }
 }
