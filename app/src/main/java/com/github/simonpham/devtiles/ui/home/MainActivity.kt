@@ -1,5 +1,6 @@
 package com.github.simonpham.devtiles.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,6 +11,8 @@ import com.github.simonpham.devtiles.ui.common.AdapterModel
 import com.github.simonpham.devtiles.ui.common.HeaderModel
 import com.github.simonpham.devtiles.ui.common.ItemHeaderViewHolder
 import com.github.simonpham.devtiles.ui.common.MixAdapter
+import com.github.simonpham.devtiles.ui.guide.PagerActivity
+import com.github.simonpham.devtiles.util.showAboutDialog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -37,12 +40,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_refresh -> {
-                // refresh
+            R.id.menu_wizard -> {
+                startActivity(Intent(this, PagerActivity::class.java))
                 return true
             }
             R.id.menu_settings -> {
                 // settings
+                return true
+            }
+            R.id.menu_about -> {
+                showAboutDialog(this)
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
