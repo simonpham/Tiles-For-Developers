@@ -1,7 +1,7 @@
-package com.github.simonpham.devtiles.ui.guide
+package com.github.simonpham.devtiles.ui.guide.board
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

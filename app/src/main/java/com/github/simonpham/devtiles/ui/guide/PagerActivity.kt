@@ -1,10 +1,10 @@
-package com.github.simonpham.devtiles.ui
+package com.github.simonpham.devtiles.ui.guide
 
 import android.animation.ArgbEvaluator
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.ImageView
 import com.github.simonpham.devtiles.PAGE_COUNT
