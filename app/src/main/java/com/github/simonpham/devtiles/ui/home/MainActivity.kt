@@ -27,12 +27,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val sharedPrefs = SingletonInstances.getSharedPrefs()
+
         setContentView(R.layout.activity_main)
         supportActionBar?.title = getString(R.string.app_title)
 
         recyclerView.adapter = adapter
 
         adapter.setData(makeAdapterData())
+
+        if (sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
+            viewChangelog(this)
+            sharedPrefs.lastKnownVersionCode = BuildConfig.VERSION_CODE
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
