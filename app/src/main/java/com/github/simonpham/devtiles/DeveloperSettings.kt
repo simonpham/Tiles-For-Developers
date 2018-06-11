@@ -30,13 +30,18 @@ class DeveloperSettings(val context: Context) {
         }
     }
 
-    fun setSystemProp(property: String, value: String) {
+    fun setSystemProp(property: String, value: String, kickNeeded: Boolean = false) {
         try {
             SystemProperties.set(property, value)
         } catch (e: RuntimeException) {
             if (sharedPrefs.magicGranted) {
                 doAsync {
                     Shell.SU.run("setprop $property $value")
+                    uiThread {
+                        if (kickNeeded) {
+                            kickSystemService() // Settings app magic
+                        }
+                    }
                 }
             } else {
                 context.toast("Failed to set system property!\nPlease grant SU permission or re-run permission wizard")

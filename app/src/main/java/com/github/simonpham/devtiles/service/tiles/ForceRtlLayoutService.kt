@@ -22,8 +22,7 @@ class ForceRtlLayoutService : BaseTileService() {
 
     override fun onClick() {
         devSettings.setSystemProp(SYSPROP_DEBUG_FORCE_RTL,
-                if (qsTile.state == Tile.STATE_INACTIVE) "1" else "0")
-        devSettings.kickSystemService() // Settings app magic
+                if (qsTile.state == Tile.STATE_INACTIVE) "1" else "0", true)
         refresh()
     }
 }

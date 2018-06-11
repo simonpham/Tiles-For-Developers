@@ -29,12 +29,11 @@ class StrictModeService : BaseTileService() {
     override fun onClick() {
         if (qsTile.state == Tile.STATE_INACTIVE) {
             devSettings.setSystemProp(SYSPROP_STRICT_MODE_DISABLE, "0")
-            devSettings.setSystemProp(SYSPROP_STRICT_MODE_VISUAL, "1")
+            devSettings.setSystemProp(SYSPROP_STRICT_MODE_VISUAL, "1", true)
         } else {
             devSettings.setSystemProp(SYSPROP_STRICT_MODE_DISABLE, "1")
-            devSettings.setSystemProp(SYSPROP_STRICT_MODE_VISUAL, "0")
+            devSettings.setSystemProp(SYSPROP_STRICT_MODE_VISUAL, "0", true)
         }
-        devSettings.kickSystemService() // Settings app magic
         refresh()
     }
 }

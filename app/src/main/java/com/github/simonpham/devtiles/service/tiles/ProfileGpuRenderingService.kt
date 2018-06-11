@@ -20,8 +20,7 @@ class ProfileGpuRenderingService : BaseTileService() {
 
     override fun onClick() {
         devSettings.setSystemProp(SYSPROP_DEBUG_GPU_PROFILE,
-                if (qsTile.state == Tile.STATE_INACTIVE) "visual_bars" else "false")
-        devSettings.kickSystemService() // Settings app magic
+                if (qsTile.state == Tile.STATE_INACTIVE) "visual_bars" else "false", true)
         refresh()
     }
 }
