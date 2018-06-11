@@ -70,4 +70,7 @@
     <string name="title_rate_this_app">Rate this app.</string>
     <string name="title_version">Version %s</string>
     <string name="title_changelog">Changlog</string>
+
+    <string name="pref_key_last_version_code" translatable="false">last_version_code</string>
+    <string name="pref_key_magic_granted" translatable="false">magic_granted</string>
 </resources>
