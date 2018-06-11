@@ -2,12 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menu_refresh"
+        android:showAsAction="never"
+        android:title="@string/title_refresh" />
+    <item
         android:id="@+id/menu_wizard"
+        android:showAsAction="never"
         android:title="@string/title_run_permission_wizard" />
     <item
         android:id="@+id/menu_settings"
+        android:showAsAction="never"
         android:title="@string/title_settings" />
     <item
         android:id="@+id/menu_about"
+        android:showAsAction="never"
         android:title="@string/title_about" />
 </menu>

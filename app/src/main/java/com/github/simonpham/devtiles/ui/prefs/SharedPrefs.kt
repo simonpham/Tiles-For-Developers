@@ -18,6 +18,10 @@ class SharedPrefs(private val mContext: Context) {
         get() = getInt(R.string.pref_key_last_version_code, 0)
         set(lastVersionCode) = putInt(R.string.pref_key_last_version_code, lastVersionCode)
 
+    var compatibleMode: Boolean
+        get() = getBoolean(R.string.pref_key_compatible_mode, false)
+        set(mode) = putBoolean(R.string.pref_key_compatible_mode, mode)
+
     var magicGranted: Boolean
         get() = getBoolean(R.string.pref_key_magic_granted, false)
         set(isGranted) = putBoolean(R.string.pref_key_magic_granted, isGranted)

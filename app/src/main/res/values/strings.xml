@@ -3,11 +3,20 @@
     <string name="app_title">Developer Tiles</string>
 
     <string name="open_play_store">Open Play Store</string>
-    <string name="okay">Ok</string>
+    <string name="okay">OK</string>
     <string name="close">Close</string>
 
     <string name="header_rootless_tiles">Non-root tiles</string>
+    <string name="header_sys_prop_tiles">System-prop tiles</string>
+    <string name="header_root_tiles">Root-required tiles</string>
     <string name="header_magic_required_tiles">Magic-required tiles</string>
+    <string name="header_unavailable_tiles">Unavailable</string>
+
+    <string name="header_rootless_tiles_tip">These tiles don\'t require any special permissions, can run on all devices</string>
+    <string name="header_sys_prop_tiles_tip">You\'re so lucky to have these tiles compatible, otherwise they need root permission to work</string>
+    <string name="header_root_tiles_tip">These tiles require superuser permission to work correctly</string>
+    <string name="header_magic_required_tiles_tip">These tiles require special permission to write secure settings</string>
+    <string name="header_unavailable_tiles_tip">These tiles are currently not compatible with your device. Consider re-run permission wizard or grant superuser permission.</string>
 
     <string name="tile_demo_mode">Demo mode</string>
     <string name="tile_debug_gpu_overdraw">Debug GPU overdraw</string>
@@ -37,6 +46,7 @@
 
     <string name="toast_permission_required">Please grant permission!</string>
 
+    <string name="title_refresh">Refresh</string>
     <string name="title_run_permission_wizard">Run permission wizard</string>
     <string name="title_settings">Settings</string>
     <string name="title_about">About</string>
@@ -66,12 +76,13 @@
     <string name="title_follow_next_step">Follow the next step to add tiles to your quick settings panel</string>
 
     <string name="title_github_repository">GitHub Repository</string>
-    <string name="title_github_repo">simonpham/Tiles-For-Developers</string>
+    <string name="title_github_sub">github.com/simonpham/Tiles-For-Developers\nPlease create an issue on this repo if you got some trouble. Thank you!</string>
     <string name="title_rate_this_app">Rate this app.</string>
     <string name="title_version">Version %s</string>
     <string name="title_changelog">Changlog</string>
 
     <string name="pref_key_last_version_code" translatable="false">last_version_code</string>
+    <string name="pref_key_compatible_mode" translatable="false">compatible_mode</string>
     <string name="pref_key_magic_granted" translatable="false">magic_granted</string>
     <string name="pref_key_is_first_launch" translatable="false">is_first_launch</string>
 </resources>
