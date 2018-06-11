@@ -21,7 +21,7 @@ class ForceRtlLayoutService : BaseTileService() {
 
 
     override fun onClick() {
-        SystemProperties.set(SYSPROP_DEBUG_FORCE_RTL,
+        devSettings.setSystemProp(SYSPROP_DEBUG_FORCE_RTL,
                 if (qsTile.state == Tile.STATE_INACTIVE) "1" else "0")
         devSettings.kickSystemService() // Settings app magic
         refresh()

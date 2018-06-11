@@ -19,7 +19,7 @@ class DebugGpuOverdrawService : BaseTileService() {
     }
 
     override fun onClick() {
-        SystemProperties.set(SYSPROP_DEBUG_GPU_OVERDRAW,
+        devSettings.setSystemProp(SYSPROP_DEBUG_GPU_OVERDRAW,
                 if (qsTile.state == Tile.STATE_INACTIVE) "show" else "false")
         devSettings.kickSystemService() // Settings app magic
         refresh()

@@ -42,7 +42,7 @@ class AdbOverNetworkService : BaseTileService() {
     }
 
     override fun onClick() {
-        SystemProperties.set(SYSPROP_ADB_PORT,
+        devSettings.setSystemProp(SYSPROP_ADB_PORT,
                 if (isAdbOverNetworkEnabled()) "-1" else "5555")
         refresh()
     }

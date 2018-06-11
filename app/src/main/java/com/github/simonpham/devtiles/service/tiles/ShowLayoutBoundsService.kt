@@ -19,7 +19,7 @@ class ShowLayoutBoundsService : BaseTileService() {
     }
 
     override fun onClick() {
-        SystemProperties.set(SYSPROP_DEBUG_LAYOUT,
+        devSettings.setSystemProp(SYSPROP_DEBUG_LAYOUT,
                 if (qsTile.state == Tile.STATE_INACTIVE) "true" else "false")
         devSettings.kickSystemService() // Settings app magic
         refresh()
