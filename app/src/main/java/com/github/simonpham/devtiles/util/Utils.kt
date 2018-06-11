@@ -5,19 +5,31 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Looper
+import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
-import com.github.simonpham.devtiles.BuildConfig
-import com.github.simonpham.devtiles.GITHUB_REPO
-import com.github.simonpham.devtiles.PACKAGE_NAME
-import com.github.simonpham.devtiles.R
+import com.github.simonpham.devtiles.*
 
 /**
  * Created by Simon Pham on 6/1/18.
  * Email: simonpham.dn@gmail.com
  */
+
+fun viewChangelog(context: Context) {
+    val webView = WebView(context)
+    AlertDialog.Builder(context).setTitle(R.string.title_changelog)
+            .setView(webView)
+            .setPositiveButton(R.string.close, null)
+            .show()
+
+    val margin = context.resources.getDimensionPixelOffset(R.dimen.margin_normal)
+    (webView.layoutParams as ViewGroup.MarginLayoutParams)
+            .setMargins(margin, 0, margin, 0)
+    webView.loadUrl(CHANGELOG_URL)
+}
 
 fun showAboutDialog(activity: Activity) {
     val vAbout = activity.layoutInflater.inflate(R.layout.dialog_about, null, false)

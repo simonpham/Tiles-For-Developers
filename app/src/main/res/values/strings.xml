@@ -3,6 +3,8 @@
     <string name="app_title">Developer Tiles</string>
 
     <string name="open_play_store">Open Play Store</string>
+    <string name="okay">Ok</string>
+    <string name="close">Close</string>
 
     <string name="header_rootless_tiles">Non-root tiles</string>
     <string name="header_magic_required_tiles">Magic-required tiles</string>
@@ -67,4 +69,5 @@
     <string name="title_github_repo">simonpham/Tiles-For-Developers</string>
     <string name="title_rate_this_app">Rate this app.</string>
     <string name="title_version">Version %s</string>
+    <string name="title_changelog">Changlog</string>
 </resources>
