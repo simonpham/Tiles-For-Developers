@@ -76,7 +76,7 @@
     <string name="title_follow_next_step">Follow the next step to add tiles to your quick settings panel</string>
 
     <string name="title_github_repository">GitHub Repository</string>
-    <string name="title_github_sub">github.com/simonpham/Tiles-For-Developers\nPlease create an issue on this repo if you got some trouble. Thank you!</string>
+    <string name="title_github_sub">Please tap here and create an issue on this repo if you got into some trouble. Thank you!</string>
     <string name="title_rate_this_app">Rate this app.</string>
     <string name="title_version">Version %s</string>
     <string name="title_changelog">Changlog</string>
