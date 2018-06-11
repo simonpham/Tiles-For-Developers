@@ -1,7 +1,7 @@
 package com.github.simonpham.devtiles.util
 
-import android.support.annotation.DrawableRes
-import android.support.annotation.FloatRange
+import androidx.annotation.DrawableRes
+import androidx.annotation.FloatRange
 import com.github.simonpham.devtiles.GLOBAL_ANIMATOR_DURATION_SCALE
 import com.github.simonpham.devtiles.DeveloperSettings
 import com.github.simonpham.devtiles.R

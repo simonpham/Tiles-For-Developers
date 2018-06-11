@@ -12,13 +12,13 @@
         android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="@string/app_title"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
             android:name=".service.tiles.DemoModeService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_demo_mode"
             android:label="@string/tile_demo_mode"
@@ -29,7 +29,7 @@
         </service>
         <service
             android:name=".service.tiles.DebugGpuOverdrawService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_debug_overdraw"
             android:label="@string/tile_debug_gpu_overdraw"
@@ -40,7 +40,7 @@
         </service>
         <service
             android:name=".service.tiles.ShowLayoutBoundsService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_show_layout"
             android:label="@string/tile_show_layout_bounds"
@@ -62,7 +62,7 @@
         </service>
         <service
             android:name=".service.tiles.ProfileGpuRenderingService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_graphics"
             android:label="@string/tile_profile_gpu_rendering"
@@ -73,7 +73,7 @@
         </service>
         <service
             android:name=".service.tiles.AdbOverNetworkService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_adb_on"
             android:label="@string/tile_adb_over_network"
@@ -84,7 +84,7 @@
         </service>
         <service
             android:name=".service.tiles.CaffeineService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_caffeine"
             android:label="@string/tile_caffeine"
@@ -95,7 +95,7 @@
         </service>
         <service
             android:name=".service.tiles.ShowTapsService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_show_taps"
             android:label="@string/tile_show_taps"
@@ -106,7 +106,7 @@
         </service>
         <service
             android:name=".service.tiles.AnimatorDurationService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_animator_duration"
             android:label="@string/tile_animator_duration"
@@ -117,7 +117,7 @@
         </service>
         <service
             android:name=".service.tiles.StrictModeService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_strict_mode"
             android:label="@string/tile_strict_mode"
@@ -128,7 +128,7 @@
         </service>
         <service
             android:name=".service.tiles.UsbDebuggingService"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             android:icon="@drawable/tile_icon_adb"
             android:label="@string/tile_usb_debugging"
@@ -139,10 +139,19 @@
         </service>
 
         <activity
-            android:name=".ui.PagerActivity"
+            android:name=".ui.guide.PagerActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.home.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

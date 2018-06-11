@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.PowerManager
 import android.service.quicksettings.TileService
 import com.github.simonpham.devtiles.service.tiles.CaffeineTileHelper
+import com.github.simonpham.devtiles.ui.prefs.SharedPrefs
 
 /**
  * Created by Simon Pham on 6/1/18.
@@ -26,15 +27,30 @@ class SingletonInstances private constructor(private val appContext: Context) {
         }
 
         fun getAppContext() = INSTANCE.appContext
-        fun getPowerManager() = INSTANCE.powerManager
-        fun getWakeLock(): PowerManager.WakeLock = INSTANCE.wakeLock
-        fun getCaffeineTileHelper() = INSTANCE.caffeineTileHelper
-        fun getDevSettings() =  INSTANCE.devSettings
+
+        fun getPowerManager() = INSTANCE.powerManagerLazy
+
+        fun getWakeLock(): PowerManager.WakeLock = INSTANCE.wakeLockLazy
+
+        fun getCaffeineTileHelper() = INSTANCE.caffeineTileHelperLazy
+
+        fun getDevSettings() = INSTANCE.devSettingsLazy
+
+        fun getPackageManager() = INSTANCE.packageManagerLazy
+
+        fun getSharedPrefs(): SharedPrefs = INSTANCE.sharedPrefsLazy
     }
 
-    private val powerManager by lazy { getAppContext().getSystemService(TileService.POWER_SERVICE) as PowerManager }
+    private val powerManagerLazy by lazy { getAppContext().getSystemService(TileService.POWER_SERVICE) as PowerManager }
+
     @Suppress("DEPRECATION")
-    private val wakeLock by lazy { getPowerManager().newWakeLock(PowerManager.FULL_WAKE_LOCK, "CaffeineTile") }
-    private val caffeineTileHelper by lazy { CaffeineTileHelper() }
-    private val devSettings by lazy { DeveloperSettings(getAppContext()) }
+    private val wakeLockLazy by lazy { getPowerManager().newWakeLock(PowerManager.FULL_WAKE_LOCK, "DevTiles:CaffeineTile") }
+
+    private val caffeineTileHelperLazy by lazy { CaffeineTileHelper() }
+
+    private val devSettingsLazy by lazy { DeveloperSettings(getAppContext()) }
+
+    private val packageManagerLazy by lazy { getAppContext().packageManager }
+
+    private val sharedPrefsLazy by lazy { SharedPrefs(getAppContext()) }
 }

@@ -1,7 +1,7 @@
 package com.github.simonpham.devtiles.service.tiles
 
 import android.graphics.drawable.Icon
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.view.ContextThemeWrapper
 import android.view.WindowManager
 import com.github.simonpham.devtiles.R
