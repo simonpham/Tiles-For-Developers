@@ -38,11 +38,15 @@ fun viewChangelog(context: Context) {
 
 fun showAboutDialog(activity: Activity) {
     val vAbout = activity.layoutInflater.inflate(R.layout.dialog_about, null, false)
-    val btnRate = vAbout.findViewById(R.id.rate_us) as LinearLayout
-    val btnGitHub = vAbout.findViewById(R.id.git_repo) as LinearLayout
+    val btnRate = vAbout.findViewById(R.id.rateUs) as LinearLayout
+    val btnShowChanges = vAbout.findViewById(R.id.showChanges) as LinearLayout
+    val btnGitHub = vAbout.findViewById(R.id.gitRepo) as LinearLayout
     val tvVersion = vAbout.findViewById(R.id.tvVersion) as TextView
     btnRate.setOnClickListener {
         openPlayStore(activity, PACKAGE_NAME)
+    }
+    btnShowChanges.setOnClickListener {
+        viewChangelog(activity)
     }
     btnGitHub.setOnClickListener {
         openUrl(activity, GITHUB_REPO)

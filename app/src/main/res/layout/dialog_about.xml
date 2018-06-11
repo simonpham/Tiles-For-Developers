@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/rate_us"
+        android:id="@+id/rateUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
@@ -33,7 +33,29 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/git_repo"
+        android:id="@+id/showChanges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/margin_huge"
+        android:paddingTop="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_huge"
+        android:paddingBottom="@dimen/margin_normal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_changelog"
+            android:textAppearance="?textAppearanceListItem"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gitRepo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?selectableItemBackground"
