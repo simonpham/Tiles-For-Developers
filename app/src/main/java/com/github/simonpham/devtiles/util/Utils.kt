@@ -59,6 +59,14 @@ fun showAboutDialog(activity: Activity) {
             .show()
 }
 
+fun showInfoDialog(context: Context, message: String) {
+    AlertDialog.Builder(context)
+            .setTitle("")
+            .setMessage(message)
+            .create()
+            .show()
+}
+
 fun openUrl(context: Context, url: String, message: String = "Open $url") {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
     context.startActivity(Intent.createChooser(intent, message))
