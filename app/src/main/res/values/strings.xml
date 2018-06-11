@@ -12,6 +12,12 @@
     <string name="header_magic_required_tiles">Magic-required tiles</string>
     <string name="header_unavailable_tiles">Unavailable</string>
 
+    <string name="header_rootless_tiles_tip">These tiles don\'t require any special permissions, can run on all devices</string>
+    <string name="header_sys_prop_tiles_tip">You\'re so lucky to have these tiles compatible, otherwise they need root permission to work</string>
+    <string name="header_root_tiles_tip">These tiles require superuser permission to work correctly</string>
+    <string name="header_magic_required_tiles_tip">These tiles require special permission to write secure settings</string>
+    <string name="header_unavailable_tiles_tip">These tiles are currently not compatible with your device. Consider re-run permission wizard or grant superuser permission.</string>
+
     <string name="tile_demo_mode">Demo mode</string>
     <string name="tile_debug_gpu_overdraw">Debug GPU overdraw</string>
     <string name="tile_show_layout_bounds">Show layout bounds</string>

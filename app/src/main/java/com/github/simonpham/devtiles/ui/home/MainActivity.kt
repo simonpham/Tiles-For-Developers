@@ -118,35 +118,50 @@ class MainActivity : AppCompatActivity() {
 
         adapterModels.run {
             if (nonRootTiles.size > 0) {
-                add(HeaderModel(getString(R.string.header_rootless_tiles)))
+                add(HeaderModel(
+                        getString(R.string.header_rootless_tiles),
+                        getString(R.string.header_rootless_tiles_tip)
+                ))
                 addAll(nonRootTiles.map {
                     TileModel(it)
                 })
             }
 
             if (syspropTiles.size > 0) {
-                add(HeaderModel(getString(R.string.header_sys_prop_tiles)))
+                add(HeaderModel(
+                        getString(R.string.header_sys_prop_tiles),
+                        getString(R.string.header_sys_prop_tiles_tip)
+                ))
                 addAll(syspropTiles.map {
                     TileModel(it)
                 })
             }
 
             if (rootTiles.size > 0) {
-                add(HeaderModel(getString(R.string.header_root_tiles)))
+                add(HeaderModel(
+                        getString(R.string.header_root_tiles),
+                        getString(R.string.header_root_tiles_tip)
+                ))
                 addAll(rootTiles.map {
                     TileModel(it)
                 })
             }
 
             if (magicTiles.size > 0) {
-                add(HeaderModel(getString(R.string.header_magic_required_tiles)))
+                add(HeaderModel(
+                        getString(R.string.header_magic_required_tiles),
+                        getString(R.string.header_magic_required_tiles_tip)
+                ))
                 addAll(magicTiles.map {
                     TileModel(it)
                 })
             }
 
             if (unavailableTiles.size > 0) {
-                add(HeaderModel(getString(R.string.header_unavailable_tiles)))
+                add(HeaderModel(
+                        getString(R.string.header_unavailable_tiles),
+                        getString(R.string.header_unavailable_tiles_tip)
+                ))
                 addAll(unavailableTiles.map {
                     TileModel(it, false)
                 })
