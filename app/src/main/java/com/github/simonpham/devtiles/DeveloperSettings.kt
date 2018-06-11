@@ -4,9 +4,9 @@ import android.content.Context
 import android.os.SystemProperties
 import android.provider.Settings
 import com.github.simonpham.devtiles.util.toast
-import eu.chainfire.libsuperuser.Application.toast
 import eu.chainfire.libsuperuser.Shell
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 /**
  * Created by Simon Pham on 5/31/18.
@@ -21,6 +21,15 @@ class DeveloperSettings(val context: Context) {
         SystemPropPoker().execute()
     }
 
+    fun checkCompatibility() {
+        sharedPrefs.compatibleMode = false
+        try {
+            SystemProperties.set("debug.dummy", "test")
+        } catch (e: RuntimeException) {
+            sharedPrefs.compatibleMode = true
+        }
+    }
+
     fun setSystemProp(property: String, value: String) {
         try {
             SystemProperties.set(property, value)
@@ -30,7 +39,7 @@ class DeveloperSettings(val context: Context) {
                     Shell.SU.run("setprop $property $value")
                 }
             } else {
-                toast(context, "Failed to set system property!\nPlease grant permission or re-run permission wizard")
+                context.toast("Failed to set system property!\nPlease grant SU permission or re-run permission wizard")
             }
         }
     }
