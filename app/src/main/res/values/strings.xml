@@ -3,7 +3,7 @@
     <string name="app_title">Developer Tiles</string>
 
     <string name="open_play_store">Open Play Store</string>
-    <string name="okay">Ok</string>
+    <string name="okay">OK</string>
     <string name="close">Close</string>
 
     <string name="header_rootless_tiles">Non-root tiles</string>
@@ -66,7 +66,7 @@
     <string name="title_follow_next_step">Follow the next step to add tiles to your quick settings panel</string>
 
     <string name="title_github_repository">GitHub Repository</string>
-    <string name="title_github_repo">simonpham/Tiles-For-Developers</string>
+    <string name="title_github_sub">github.com/simonpham/Tiles-For-Developers\nPlease create an issue on this repo if you got some trouble. Thank you!</string>
     <string name="title_rate_this_app">Rate this app.</string>
     <string name="title_version">Version %s</string>
     <string name="title_changelog">Changlog</string>
