@@ -1,19 +1,21 @@
 package com.github.simonpham.devtiles.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.github.simonpham.devtiles.BuildConfig
 import com.github.simonpham.devtiles.R
+import com.github.simonpham.devtiles.SingletonInstances
 import com.github.simonpham.devtiles.TileInfo
 import com.github.simonpham.devtiles.ui.common.AdapterModel
 import com.github.simonpham.devtiles.ui.common.HeaderModel
 import com.github.simonpham.devtiles.ui.common.ItemHeaderViewHolder
 import com.github.simonpham.devtiles.ui.common.MixAdapter
-import com.github.simonpham.devtiles.ui.guide.PagerActivity
 import com.github.simonpham.devtiles.util.showAboutDialog
+import com.github.simonpham.devtiles.util.showPermissionWizard
 import com.github.simonpham.devtiles.util.toast
+import com.github.simonpham.devtiles.util.viewChangelog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +31,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val sharedPrefs = SingletonInstances.getSharedPrefs()
+        if (sharedPrefs.isFirstLaunch) {
+            sharedPrefs.isFirstLaunch = false
+            showPermissionWizard(this)
+        }
 
         setContentView(R.layout.activity_main)
         supportActionBar?.title = getString(R.string.app_title)
@@ -51,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_wizard -> {
-                startActivity(Intent(this, PagerActivity::class.java))
+                showPermissionWizard(this)
                 return true
             }
             R.id.menu_settings -> {

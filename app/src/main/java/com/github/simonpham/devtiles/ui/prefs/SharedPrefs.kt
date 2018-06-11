@@ -22,6 +22,10 @@ class SharedPrefs(private val mContext: Context) {
         get() = getBoolean(R.string.pref_key_magic_granted, false)
         set(isGranted) = putBoolean(R.string.pref_key_magic_granted, isGranted)
 
+    var isFirstLaunch: Boolean
+        get() = getBoolean(R.string.pref_key_is_first_launch, true)
+        set(isFirstLaunch) = putBoolean(R.string.pref_key_is_first_launch, isFirstLaunch)
+
     private operator fun contains(@StringRes keyRes: Int): Boolean {
         return mPrefs.contains(mContext.getString(keyRes))
     }

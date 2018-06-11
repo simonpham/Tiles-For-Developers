@@ -12,11 +12,16 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.view.ContextThemeWrapper
 import com.github.simonpham.devtiles.*
+import com.github.simonpham.devtiles.ui.guide.PagerActivity
 
 /**
  * Created by Simon Pham on 6/1/18.
  * Email: simonpham.dn@gmail.com
  */
+
+fun showPermissionWizard(context: Context) {
+    context.startActivity(Intent(context, PagerActivity::class.java))
+}
 
 fun viewChangelog(context: Context) {
     val webView = WebView(context)
