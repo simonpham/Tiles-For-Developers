@@ -8,6 +8,7 @@ import com.github.simonpham.devtiles.BuildConfig
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.SingletonInstances
 import com.github.simonpham.devtiles.TileInfo
+import com.github.simonpham.devtiles.annotation.TileCategory
 import com.github.simonpham.devtiles.ui.common.AdapterModel
 import com.github.simonpham.devtiles.ui.common.HeaderModel
 import com.github.simonpham.devtiles.ui.common.ItemHeaderViewHolder
@@ -17,8 +18,13 @@ import com.github.simonpham.devtiles.util.showPermissionWizard
 import com.github.simonpham.devtiles.util.toast
 import com.github.simonpham.devtiles.util.viewChangelog
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
+
+    private val sharedPrefs = SingletonInstances.getSharedPrefs()
+    private val devSettings = SingletonInstances.getDevSettings()
 
     private val adapter: MixAdapter by lazy {
         MixAdapter.Builder {
@@ -41,7 +47,13 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.adapter = adapter
 
-        adapter.setData(makeAdapterData())
+        doAsync {
+            devSettings.checkCompatibility()
+            val data = makeAdapterData()
+            uiThread {
+                adapter.setData(data)
+            }
+        }
 
         if (sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
             viewChangelog(this)
@@ -77,25 +89,69 @@ class MainActivity : AppCompatActivity() {
         val adapterModels = mutableListOf<AdapterModel>()
 
         val nonRootTiles = mutableListOf<TileInfo>()
+        val syspropTiles = mutableListOf<TileInfo>()
+        val rootTiles = mutableListOf<TileInfo>()
         val magicTiles = mutableListOf<TileInfo>()
+        val unavailableTiles = mutableListOf<TileInfo>()
 
         TileInfo.values().forEach { tile ->
-            if (tile.isMagicRequired) {
-                magicTiles.add(tile)
-            } else {
-                nonRootTiles.add(tile)
+            when (tile.tileCategory) {
+                TileCategory.ROOTLESS -> nonRootTiles.add(tile)
+                TileCategory.SYSPROP -> {
+                    if (!sharedPrefs.compatibleMode) {
+                        syspropTiles.add(tile)
+                    } else if (sharedPrefs.magicGranted) {
+                        rootTiles.add(tile)
+                    } else {
+                        unavailableTiles.add(tile)
+                    }
+                }
+                TileCategory.MAGIC -> {
+                    if (sharedPrefs.magicGranted) {
+                        magicTiles.add(tile)
+                    } else {
+                        unavailableTiles.add(tile)
+                    }
+                }
             }
         }
 
-        adapterModels.add(HeaderModel(getString(R.string.header_rootless_tiles)))
-        adapterModels.addAll(nonRootTiles.map {
-            TileModel(it)
-        })
+        adapterModels.run {
+            if (nonRootTiles.size > 0) {
+                add(HeaderModel(getString(R.string.header_rootless_tiles)))
+                addAll(nonRootTiles.map {
+                    TileModel(it)
+                })
+            }
 
-        adapterModels.add(HeaderModel(getString(R.string.header_magic_required_tiles)))
-        adapterModels.addAll(magicTiles.map {
-            TileModel(it)
-        })
+            if (syspropTiles.size > 0) {
+                add(HeaderModel(getString(R.string.header_sys_prop_tiles)))
+                addAll(syspropTiles.map {
+                    TileModel(it)
+                })
+            }
+
+            if (rootTiles.size > 0) {
+                add(HeaderModel(getString(R.string.header_root_tiles)))
+                addAll(rootTiles.map {
+                    TileModel(it)
+                })
+            }
+
+            if (magicTiles.size > 0) {
+                add(HeaderModel(getString(R.string.header_magic_required_tiles)))
+                addAll(magicTiles.map {
+                    TileModel(it)
+                })
+            }
+
+            if (unavailableTiles.size > 0) {
+                add(HeaderModel(getString(R.string.header_unavailable_tiles)))
+                addAll(unavailableTiles.map {
+                    TileModel(it, false)
+                })
+            }
+        }
 
         return adapterModels
     }

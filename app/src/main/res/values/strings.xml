@@ -7,7 +7,10 @@
     <string name="close">Close</string>
 
     <string name="header_rootless_tiles">Non-root tiles</string>
+    <string name="header_sys_prop_tiles">System-prop tiles</string>
+    <string name="header_root_tiles">Root-required tiles</string>
     <string name="header_magic_required_tiles">Magic-required tiles</string>
+    <string name="header_unavailable_tiles">Unavailable</string>
 
     <string name="tile_demo_mode">Demo mode</string>
     <string name="tile_debug_gpu_overdraw">Debug GPU overdraw</string>
@@ -72,6 +75,7 @@
     <string name="title_changelog">Changlog</string>
 
     <string name="pref_key_last_version_code" translatable="false">last_version_code</string>
+    <string name="pref_key_compatible_mode" translatable="false">compatible_mode</string>
     <string name="pref_key_magic_granted" translatable="false">magic_granted</string>
     <string name="pref_key_is_first_launch" translatable="false">is_first_launch</string>
 </resources>
