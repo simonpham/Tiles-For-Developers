@@ -1,8 +1,12 @@
 package com.github.simonpham.devtiles
 
 import android.content.Context
+import android.os.SystemProperties
 import android.provider.Settings
 import com.github.simonpham.devtiles.util.toast
+import eu.chainfire.libsuperuser.Application.toast
+import eu.chainfire.libsuperuser.Shell
+import org.jetbrains.anko.doAsync
 
 /**
  * Created by Simon Pham on 5/31/18.
@@ -11,8 +15,24 @@ import com.github.simonpham.devtiles.util.toast
 
 class DeveloperSettings(val context: Context) {
 
+    val sharedPrefs = SingletonInstances.getSharedPrefs()
+
     fun kickSystemService() {
         SystemPropPoker().execute()
+    }
+
+    fun setSystemProp(property: String, value: String) {
+        try {
+            SystemProperties.set(property, value)
+        } catch (e: RuntimeException) {
+            if (sharedPrefs.magicGranted) {
+                doAsync {
+                    Shell.SU.run("setprop $property $value")
+                }
+            } else {
+                toast(context, "Failed to set system property!\nPlease grant permission or re-run permission wizard")
+            }
+        }
     }
 
     fun setGlobalInt(key: String, value: Int) {
