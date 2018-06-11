@@ -31,7 +31,7 @@ android {
         // Writing System Settings fails on higher versions
         //noinspection ExpiringTargetSdkVersion,OldTargetApi
         targetSdkVersion 22
-        versionCode 3
+        versionCode 4
         versionName "1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

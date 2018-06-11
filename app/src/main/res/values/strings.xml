@@ -3,6 +3,8 @@
     <string name="app_title">Developer Tiles</string>
 
     <string name="open_play_store">Open Play Store</string>
+    <string name="okay">Ok</string>
+    <string name="close">Close</string>
 
     <string name="header_rootless_tiles">Non-root tiles</string>
     <string name="header_magic_required_tiles">Magic-required tiles</string>
@@ -45,7 +47,7 @@
     <string name="title_skip"><u>Skip</u></string>
     <string name="title_later">OK, I\'ll do that later</string>
     <string name="title_rate_us">Rate us</string>
-    <string name="title_finish">app.finish()</string>
+    <string name="title_finish">Finish setup</string>
 
     <string name="title_welcome">Welcome to DevTiles</string>
     <string name="title_getting_set_up">Getting set up is super easy.</string>
@@ -67,4 +69,9 @@
     <string name="title_github_repo">simonpham/Tiles-For-Developers</string>
     <string name="title_rate_this_app">Rate this app.</string>
     <string name="title_version">Version %s</string>
+    <string name="title_changelog">Changlog</string>
+
+    <string name="pref_key_last_version_code" translatable="false">last_version_code</string>
+    <string name="pref_key_magic_granted" translatable="false">magic_granted</string>
+    <string name="pref_key_is_first_launch" translatable="false">is_first_launch</string>
 </resources>

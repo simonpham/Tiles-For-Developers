@@ -1,14 +1,11 @@
 package com.github.simonpham.devtiles.ui.guide.board
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.github.simonpham.devtiles.KEY_MAGIC_AVAILABILITY
-import com.github.simonpham.devtiles.KEY_SU_AVAILABILITY
-import com.github.simonpham.devtiles.PACKAGE_NAME
-import com.github.simonpham.devtiles.R
+import androidx.fragment.app.Fragment
+import com.github.simonpham.devtiles.*
 import com.github.simonpham.devtiles.util.gone
 import com.github.simonpham.devtiles.util.show
 import eu.chainfire.libsuperuser.Shell
@@ -22,6 +19,8 @@ import org.jetbrains.anko.uiThread
  */
 
 class RequestPermissionFragment : Fragment() {
+
+    private val sharedPrefs = SingletonInstances.getSharedPrefs()
 
     private var isSuAvailable: Boolean = false
     private var isMagicAvailable: Boolean = false
@@ -104,6 +103,7 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun gotMagicPermission() {
+        sharedPrefs.magicGranted = true
         isMagicAvailable = true
         if (context != null) {
             showSuccess()

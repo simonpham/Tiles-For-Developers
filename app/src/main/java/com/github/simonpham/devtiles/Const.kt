@@ -32,3 +32,5 @@ const val KEY_MAGIC_AVAILABILITY = "KEY.MAGIC_AVAILABILITY"
 
 const val PACKAGE_NAME = "com.github.simonpham.devtiles"
 const val GITHUB_REPO = "https://github.com/simonpham/Tiles-For-Developers"
+
+const val CHANGELOG_URL = "file:///android_asset/changelog.html"
