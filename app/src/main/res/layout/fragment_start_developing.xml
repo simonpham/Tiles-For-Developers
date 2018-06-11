@@ -55,7 +55,6 @@
         android:layout_marginBottom="?actionBarSize"
         android:layout_marginTop="@dimen/margin_normal"
         android:text="@string/title_finish"
-        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
