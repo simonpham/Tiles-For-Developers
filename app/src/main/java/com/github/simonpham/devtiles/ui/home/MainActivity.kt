@@ -46,18 +46,27 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.app_title)
 
         recyclerView.adapter = adapter
+        refresh()
 
+        if (sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
+            viewChangelog(this)
+            sharedPrefs.lastKnownVersionCode = BuildConfig.VERSION_CODE
+        }
+
+        swiperefresh.setOnRefreshListener {
+            refresh()
+        }
+    }
+
+    private fun refresh() {
+        swiperefresh.isRefreshing = true
         doAsync {
             devSettings.checkCompatibility()
             val data = makeAdapterData()
             uiThread {
                 adapter.setData(data)
+                swiperefresh.isRefreshing = false
             }
-        }
-
-        if (sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
-            viewChangelog(this)
-            sharedPrefs.lastKnownVersionCode = BuildConfig.VERSION_CODE
         }
     }
 
@@ -68,6 +77,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.menu_refresh -> {
+                refresh()
+                return true
+            }
             R.id.menu_wizard -> {
                 showPermissionWizard(this)
                 return true
