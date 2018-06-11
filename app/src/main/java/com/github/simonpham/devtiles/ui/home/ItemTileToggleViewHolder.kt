@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.item_tile_toggle.view.*
  * Email: simonpham.dn@gmail.com
  */
 
-data class TileModel(val tile: TileInfo) : AdapterModel
+data class TileModel(val tile: TileInfo, val isAvailable: Boolean = true) : AdapterModel
 
 class ItemTileToggleViewHolder(
         itemView: View
@@ -52,6 +52,25 @@ class ItemTileToggleViewHolder(
             tvDescription.text = tile.getDescription(context.resources)
             ivIcon.setImageDrawable(getTileIconDrawable(tile, isComponentEnabled(tile.tileClass)))
             TooltipCompat.setTooltipText(vRoot, tile.getDescription(context.resources))
+
+            if (!isAvailable) {
+                swEnabled.isChecked = false
+            }
+            toggleView(isAvailable)
+        }
+    }
+
+    private fun toggleView(isAvailable: Boolean) {
+        if (isAvailable) {
+            swEnabled.isEnabled = true
+            tvDescription.isEnabled = true
+            tvTitle.isEnabled = true
+            tvTitle.isEnabled = true
+        } else {
+            swEnabled.isEnabled = false
+            tvDescription.isEnabled = false
+            tvTitle.isEnabled = false
+            tvTitle.isEnabled = false
         }
     }
 

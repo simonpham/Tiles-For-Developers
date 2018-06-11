@@ -31,7 +31,7 @@ android {
         // Writing System Settings fails on higher versions
         //noinspection ExpiringTargetSdkVersion,OldTargetApi
         targetSdkVersion 22
-        versionCode 4
+        versionCode 5
         versionName "1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -61,7 +61,7 @@ dependencies {
     implementation "com.google.android.material:material:1.0.0-alpha3"
     implementation "androidx.cardview:cardview:1.0.0-alpha3"
 
-    implementation "androidx.constraintlayout:constraintlayout:1.1.0"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.1"
 
     compileOnly files('libs/layoutlib.jar')
     implementation 'eu.chainfire:libsuperuser:1.0.0.201704021214'

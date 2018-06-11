@@ -29,7 +29,6 @@
 
     <style name="AppTheme.Button">
         <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">true</item>
         <item name="android:paddingLeft">@dimen/button_padding</item>
         <item name="android:paddingRight">@dimen/button_padding</item>
         <item name="android:background">@drawable/bg_button</item>
