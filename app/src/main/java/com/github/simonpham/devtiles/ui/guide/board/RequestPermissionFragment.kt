@@ -99,6 +99,7 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun gotSuPermission() {
+        sharedPrefs.suGranted = true
         isSuAvailable = true
         requestMagicPermission()
     }
