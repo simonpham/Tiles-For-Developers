@@ -1,6 +1,7 @@
 package com.github.simonpham.devtiles.service.tiles
 
 import android.service.quicksettings.Tile
+import com.github.simonpham.devtiles.DATA_TYPE_INT
 import com.github.simonpham.devtiles.SYSTEM_SHOW_TAPS
 import com.github.simonpham.devtiles.service.BaseTileService
 
@@ -12,17 +13,17 @@ import com.github.simonpham.devtiles.service.BaseTileService
 class ShowTapsService : BaseTileService() {
 
     override fun refresh() {
-        qsTile.state = if (isFeatureEnabled()) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-        qsTile.updateTile()
+        updateState(isFeatureEnabled())
     }
 
     override fun onClick() {
         if (isFeatureEnabled()) {
-            devSettings.setSystemInt(SYSTEM_SHOW_TAPS, 0)
+            devSettings.setSystem(SYSTEM_SHOW_TAPS, "0", DATA_TYPE_INT)
+            updateState(false)
         } else {
-            devSettings.setSystemInt(SYSTEM_SHOW_TAPS, 1)
+            devSettings.setSystem(SYSTEM_SHOW_TAPS, "1", DATA_TYPE_INT)
+            updateState(true)
         }
-        refresh()
     }
 
     private fun isFeatureEnabled(): Boolean {

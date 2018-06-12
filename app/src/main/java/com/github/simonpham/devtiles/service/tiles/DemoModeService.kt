@@ -3,7 +3,7 @@ package com.github.simonpham.devtiles.service.tiles
 import android.content.Intent
 import android.os.Build
 import android.provider.Settings
-import android.service.quicksettings.Tile
+import com.github.simonpham.devtiles.DATA_TYPE_INT
 import com.github.simonpham.devtiles.GLOBAL_DEMO_MODE_ALLOWED
 import com.github.simonpham.devtiles.GLOBAL_DEMO_MODE_ON
 import com.github.simonpham.devtiles.service.BaseTileService
@@ -47,23 +47,23 @@ class DemoModeService : BaseTileService() {
     override fun onStartListening() {
         super.onStartListening()
         if (Settings.Global.getInt(contentResolver, GLOBAL_DEMO_MODE_ALLOWED, 0) == 0) {
-            devSettings.setGlobalInt(GLOBAL_DEMO_MODE_ALLOWED, 1)
+            devSettings.setGlobal(GLOBAL_DEMO_MODE_ALLOWED, "1", DATA_TYPE_INT)
         }
         refresh()
     }
 
     override fun refresh() {
-        qsTile.state = if (isFeatureEnabled()) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
-        qsTile.updateTile()
+        updateState(isFeatureEnabled())
     }
 
     override fun onClick() {
         if (isFeatureEnabled()) {
             stopDemoMode()
+            updateState(false)
         } else {
             startDemoMode()
+            updateState(true)
         }
-        refresh()
     }
 
     private fun isFeatureEnabled(): Boolean {
@@ -109,7 +109,7 @@ class DemoModeService : BaseTileService() {
         intent.putExtra("visible", "false")
         sendBroadcast(intent)
 
-        devSettings.setGlobalInt(GLOBAL_DEMO_MODE_ON, 1)
+        devSettings.setGlobal(GLOBAL_DEMO_MODE_ON, "1", DATA_TYPE_INT)
     }
 
     private fun getDeviceVersionForDemoClock(): String {
@@ -120,7 +120,7 @@ class DemoModeService : BaseTileService() {
         val intent = Intent(DemoMode.ACTION_DEMO.value)
         intent.putExtra(DemoMode.EXTRA_COMMAND.value, DemoMode.COMMAND_EXIT.value)
         sendBroadcast(intent)
-        devSettings.setGlobalInt(GLOBAL_DEMO_MODE_ON, 0)
+        devSettings.setGlobal(GLOBAL_DEMO_MODE_ON, "0", DATA_TYPE_INT)
     }
 
 
