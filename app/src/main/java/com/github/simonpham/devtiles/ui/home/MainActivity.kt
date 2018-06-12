@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val sharedPrefs = SingletonInstances.getSharedPrefs()
-        if (sharedPrefs.isFirstLaunch) {
+        if (sharedPrefs.isFirstLaunch
+                || sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
             sharedPrefs.isFirstLaunch = false
             showPermissionWizard(this)
         }
