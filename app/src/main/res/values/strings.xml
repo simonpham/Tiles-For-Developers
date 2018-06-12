@@ -52,6 +52,7 @@
     <string name="title_about">About</string>
 
     <string name="title_getting_started">Getting Started</string>
+    <string name="title_install_from_play_store">Install from Play Store</string>
     <string name="title_grant_permission">Grant Permission</string>
     <string name="title_continue">Continue</string>
     <string name="title_skip"><u>Skip</u></string>
@@ -61,11 +62,13 @@
 
     <string name="title_welcome">Welcome to DevTiles</string>
     <string name="title_getting_set_up">Getting set up is super easy.</string>
+    <string name="title_install_dependency">Please install this plugin:\n<i>Devetter</i></string>
+    <string name="title_devetter_details">This is required for some tiles to work</string>
+    <string name="title_devetter_installed">Devetter Plugin is installed!</string>
+    <string name="title_devetter_continue">Follow the next step to give Devetter magic permissions</string>
     <string name="title_grant_su">Please grant SU permission in order to gather \"magic\" permissions</string>
     <string name="title_grant_su_details">Some QS tiles (like Demo mode) require these permissions to work</string>
-    <string name="title_congrats_add_tiles">Congrats!\nAfter enable some tiles, you can</string>
-    <string name="title_add_tiles_guide">pull down your quick settings panel and click edit button to add ones</string>
-    <string name="title_set_up_done">Everything\'s ready!\nLet\'s go to main dashboard :D</string>
+    <string name="title_set_up_done">Everything\'s ready!\nLet\'s go to the main dashboard :D</string>
     <string name="title_go_rate_us">And don\'t forget to give us 5★</string>
     <string name="title_su_requesting">Requesting superuser permission…</string>
     <string name="title_magic_gathering">Gathering \"magic\" permissions…</string>
@@ -73,7 +76,7 @@
     <string name="title_get_su_failed">Get superuser permission failed!</string>
     <string name="title_check_again">Don\'t be worried to tap Skip\nMost of the tiles will work perfectly without these permissions</string>
     <string name="title_get_permission_success">Get permissions successfully!</string>
-    <string name="title_follow_next_step">Follow the next step to add tiles to your quick settings panel</string>
+    <string name="title_follow_next_step">Click Continue and add some tiles to your quick settings panel</string>
 
     <string name="title_github_repository">GitHub Repository</string>
     <string name="title_github_sub">Please tap here and create an issue on this repo if you got into some trouble. Thank you!</string>
@@ -82,7 +85,9 @@
     <string name="title_changelog">Changlog</string>
 
     <string name="pref_key_last_version_code" translatable="false">last_version_code</string>
+    <string name="pref_key_is_devetter_installed" translatable="false">is_devetter_installed</string>
     <string name="pref_key_compatible_mode" translatable="false">compatible_mode</string>
+    <string name="pref_key_su_granted" translatable="false">su_granted</string>
     <string name="pref_key_magic_granted" translatable="false">magic_granted</string>
     <string name="pref_key_is_first_launch" translatable="false">is_first_launch</string>
 </resources>
