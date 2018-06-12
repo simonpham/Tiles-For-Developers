@@ -1,6 +1,8 @@
 package com.github.simonpham.devtiles
 
+import android.content.ComponentName
 import android.content.Context
+import android.content.Intent
 import android.os.SystemProperties
 import android.provider.Settings
 import com.github.simonpham.devtiles.util.toast
@@ -33,6 +35,9 @@ class DeveloperSettings(val context: Context) {
     fun setSystemProp(property: String, value: String, kickNeeded: Boolean = false) {
         try {
             SystemProperties.set(property, value)
+            if (kickNeeded) {
+                kickSystemService() // Settings app magic
+            }
         } catch (e: RuntimeException) {
             if (sharedPrefs.magicGranted) {
                 doAsync {
@@ -49,12 +54,40 @@ class DeveloperSettings(val context: Context) {
         }
     }
 
-    fun setGlobalInt(key: String, value: Int) {
-        try {
-            Settings.Global.putInt(context.contentResolver, key, value)
-        } catch (se: SecurityException) {
-            showPermissionError()
-        }
+    fun setGlobal(key: String, value: String, dataType: Int = DATA_TYPE_STRING) {
+        val intent = Intent(ACTION_PUT_GLOBAL)
+                .setComponent(ComponentName(
+                        "com.github.simonpham.devetter",
+                        "com.github.simonpham.devetter.DevetterService"
+                ))
+                .putExtra(EXTRA_KEY, key)
+                .putExtra(EXTRA_VALUE, value)
+                .putExtra(EXTRA_VALUE_TYPE, dataType)
+        context.startService(intent)
+    }
+
+    fun setSecure(key: String, value: String, dataType: Int = DATA_TYPE_STRING) {
+        val intent = Intent(ACTION_PUT_SECURE)
+                .setComponent(ComponentName(
+                        "com.github.simonpham.devetter",
+                        "com.github.simonpham.devetter.DevetterService"
+                ))
+                .putExtra(EXTRA_KEY, key)
+                .putExtra(EXTRA_VALUE, value)
+                .putExtra(EXTRA_VALUE_TYPE, dataType)
+        context.startService(intent)
+    }
+
+    fun setSystem(key: String, value: String, dataType: Int = DATA_TYPE_STRING) {
+        val intent = Intent(ACTION_PUT_SYSTEM)
+                .setComponent(ComponentName(
+                        "com.github.simonpham.devetter",
+                        "com.github.simonpham.devetter.DevetterService"
+                ))
+                .putExtra(EXTRA_KEY, key)
+                .putExtra(EXTRA_VALUE, value)
+                .putExtra(EXTRA_VALUE_TYPE, dataType)
+        context.startService(intent)
     }
 
     fun getGlobalInt(key: String): Int {
@@ -68,14 +101,6 @@ class DeveloperSettings(val context: Context) {
         }
     }
 
-    fun setGlobalFloat(key: String, value: Float) {
-        try {
-            Settings.Global.putFloat(context.contentResolver, key, value)
-        } catch (se: SecurityException) {
-            showPermissionError()
-        }
-    }
-
     fun getGlobalFloat(key: String, default: Float = 0f): Float {
         var value = default
         try {
@@ -84,17 +109,6 @@ class DeveloperSettings(val context: Context) {
             showPermissionError()
         } finally {
             return value
-        }
-    }
-
-    // require targetSdkVersion 22 in app build.gradle
-    fun setSystemInt(key: String, value: Int) {
-        try {
-            Settings.System.putInt(context.contentResolver, key, value)
-        } catch (se: SecurityException) {
-            showPermissionError()
-        } catch (e: IllegalArgumentException) {
-            showPermissionError()
         }
     }
 

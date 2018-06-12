@@ -13,10 +13,7 @@ import com.github.simonpham.devtiles.ui.common.AdapterModel
 import com.github.simonpham.devtiles.ui.common.HeaderModel
 import com.github.simonpham.devtiles.ui.common.ItemHeaderViewHolder
 import com.github.simonpham.devtiles.ui.common.MixAdapter
-import com.github.simonpham.devtiles.util.showAboutDialog
-import com.github.simonpham.devtiles.util.showPermissionWizard
-import com.github.simonpham.devtiles.util.toast
-import com.github.simonpham.devtiles.util.viewChangelog
+import com.github.simonpham.devtiles.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -37,7 +34,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val sharedPrefs = SingletonInstances.getSharedPrefs()
-        if (sharedPrefs.isFirstLaunch) {
+        if (sharedPrefs.isFirstLaunch
+                || sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
             sharedPrefs.isFirstLaunch = false
             showPermissionWizard(this)
         }
@@ -113,14 +111,14 @@ class MainActivity : AppCompatActivity() {
                 TileCategory.SYSPROP -> {
                     if (!sharedPrefs.compatibleMode) {
                         syspropTiles.add(tile)
-                    } else if (sharedPrefs.magicGranted) {
+                    } else if (sharedPrefs.suGranted) {
                         rootTiles.add(tile)
                     } else {
                         unavailableTiles.add(tile)
                     }
                 }
                 TileCategory.MAGIC -> {
-                    if (sharedPrefs.magicGranted) {
+                    if (isDevetterInstalled() && sharedPrefs.magicGranted) {
                         magicTiles.add(tile)
                     } else {
                         unavailableTiles.add(tile)

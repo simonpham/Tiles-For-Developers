@@ -3,6 +3,7 @@ package com.github.simonpham.devtiles.util
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Looper
 import android.view.ViewGroup
@@ -14,10 +15,23 @@ import androidx.appcompat.view.ContextThemeWrapper
 import com.github.simonpham.devtiles.*
 import com.github.simonpham.devtiles.ui.guide.PagerActivity
 
+
 /**
  * Created by Simon Pham on 6/1/18.
  * Email: simonpham.dn@gmail.com
  */
+
+fun isDevetterInstalled(): Boolean {
+    val pm = SingletonInstances.getPackageManager()
+    var installed: Boolean
+    try {
+        pm.getPackageInfo(DEVETTER_PACKAGE_NAME, PackageManager.GET_SERVICES)
+        installed = true
+    } catch (e: PackageManager.NameNotFoundException) {
+        installed = false
+    }
+    return installed
+}
 
 fun showPermissionWizard(context: Context) {
     context.startActivity(Intent(context, PagerActivity::class.java))

@@ -1,5 +1,6 @@
 package com.github.simonpham.devtiles.service
 
+import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import com.github.simonpham.devtiles.SingletonInstances
 
@@ -18,4 +19,9 @@ abstract class BaseTileService : TileService() {
     }
 
     abstract fun refresh()
+
+    protected fun updateState(isOn: Boolean) {
+        qsTile.state = if (isOn) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+        qsTile.updateTile()
+    }
 }

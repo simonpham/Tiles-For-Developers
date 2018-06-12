@@ -2,6 +2,7 @@ package com.github.simonpham.devtiles.util
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.FloatRange
+import com.github.simonpham.devtiles.DATA_TYPE_FLOAT
 import com.github.simonpham.devtiles.GLOBAL_ANIMATOR_DURATION_SCALE
 import com.github.simonpham.devtiles.DeveloperSettings
 import com.github.simonpham.devtiles.R
@@ -40,6 +41,6 @@ object AnimatorDurationScaler {
     fun setAnimatorScale(
             devSettings: DeveloperSettings,
             @FloatRange(from = 0.0, to = 10.0) scale: Float) {
-        devSettings.setGlobalFloat(GLOBAL_ANIMATOR_DURATION_SCALE, scale)
+        devSettings.setGlobal(GLOBAL_ANIMATOR_DURATION_SCALE, scale.toString(), DATA_TYPE_FLOAT)
     }
 }
