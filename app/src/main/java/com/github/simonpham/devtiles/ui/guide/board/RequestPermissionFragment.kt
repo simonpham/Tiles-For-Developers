@@ -83,7 +83,6 @@ class RequestPermissionFragment : Fragment() {
         }
         doAsync {
             Shell.SU.run("pm grant $PACKAGE_NAME android.permission.DUMP")
-            Shell.SU.run("pm grant $DEVETTER_PACKAGE_NAME android.permission.DUMP")
             Shell.SU.run("pm grant $DEVETTER_PACKAGE_NAME android.permission.WRITE_SECURE_SETTINGS")
             uiThread {
                 gotMagicPermission()
