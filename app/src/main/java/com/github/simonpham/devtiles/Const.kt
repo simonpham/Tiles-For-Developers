@@ -31,6 +31,24 @@ const val KEY_SU_AVAILABILITY = "KEY.SU_AVAILABILITY"
 const val KEY_MAGIC_AVAILABILITY = "KEY.MAGIC_AVAILABILITY"
 
 const val PACKAGE_NAME = "com.github.simonpham.devtiles"
+const val DEVETTER_PACKAGE_NAME = "com.github.simonpham.devetter"
 const val GITHUB_REPO = "https://github.com/simonpham/Tiles-For-Developers"
 
 const val CHANGELOG_URL = "file:///android_asset/changelog.html"
+
+const val ACTION_PUT_GLOBAL = "com.github.simonpham.devetter.action.PUT_GLOBAL"
+const val ACTION_PUT_SECURE = "com.github.simonpham.devetter.action.PUT_SECURE"
+const val ACTION_PUT_SYSTEM = "com.github.simonpham.devetter.action.PUT_SYSTEM"
+
+const val EXTRA_KEY = "com.github.simonpham.devetter.extra.KEY"
+const val EXTRA_VALUE = "com.github.simonpham.devetter.extra.VALUE"
+const val EXTRA_VALUE_TYPE = "com.github.simonpham.devetter.extra.VALUE_TYPE"
+
+const val TYPE_GLOBAL = 0
+const val TYPE_SECURE = 1
+const val TYPE_SYSTEM = 2
+
+const val DATA_TYPE_INT = 0
+const val DATA_TYPE_LONG = 1
+const val DATA_TYPE_FLOAT = 2
+const val DATA_TYPE_STRING = 3
