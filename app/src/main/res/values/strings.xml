@@ -55,7 +55,7 @@
     <string name="title_grant_permission">Grant Permission</string>
     <string name="title_continue">Continue</string>
     <string name="title_skip"><u>Skip</u></string>
-    <string name="title_later">OK, I\'ll do that later</string>
+    <string name="title_got_it">Got it</string>
     <string name="title_rate_us">Rate us</string>
     <string name="title_finish">Finish setup</string>
 
@@ -63,9 +63,9 @@
     <string name="title_getting_set_up">Getting set up is super easy.</string>
     <string name="title_grant_su">Please grant SU permission in order to gather \"magic\" permissions</string>
     <string name="title_grant_su_details">Some QS tiles (like Demo mode) require these permissions to work</string>
-    <string name="title_congrats_add_tiles">Congrats!\nYou can add some tiles now</string>
-    <string name="title_add_tiles_guide">Pull down your quick settings panel and click edit button to add some tiles</string>
-    <string name="title_set_up_done">Everything\'s set up!\nLet\'s start development job :D</string>
+    <string name="title_congrats_add_tiles">Congrats!\nAfter enable some tiles, you can</string>
+    <string name="title_add_tiles_guide">pull down your quick settings panel and click edit button to add ones</string>
+    <string name="title_set_up_done">Everything\'s ready!\nLet\'s go to main dashboard :D</string>
     <string name="title_go_rate_us">And don\'t forget to give us 5★</string>
     <string name="title_su_requesting">Requesting superuser permission…</string>
     <string name="title_magic_gathering">Gathering \"magic\" permissions…</string>

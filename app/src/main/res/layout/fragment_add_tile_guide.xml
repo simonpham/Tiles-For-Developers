@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="?actionBarSize"
         android:layout_marginTop="@dimen/margin_normal"
-        android:text="@string/title_later"
+        android:text="@string/title_got_it"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
