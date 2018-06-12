@@ -82,8 +82,8 @@ class RequestPermissionFragment : Fragment() {
             showProgress(getString(R.string.title_magic_gathering))
         }
         doAsync {
-            Shell.SU.run("pm grant $PACKAGE_NAME android.permission.WRITE_SECURE_SETTINGS")
             Shell.SU.run("pm grant $PACKAGE_NAME android.permission.DUMP")
+            Shell.SU.run("pm grant $DEVETTER_PACKAGE_NAME android.permission.WRITE_SECURE_SETTINGS")
             uiThread {
                 gotMagicPermission()
             }
@@ -98,6 +98,7 @@ class RequestPermissionFragment : Fragment() {
     }
 
     private fun gotSuPermission() {
+        sharedPrefs.suGranted = true
         isSuAvailable = true
         requestMagicPermission()
     }

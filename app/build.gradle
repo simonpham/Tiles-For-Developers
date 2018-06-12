@@ -28,10 +28,8 @@ android {
     defaultConfig {
         applicationId "com.github.simonpham.devtiles"
         minSdkVersion 24
-        // Writing System Settings fails on higher versions
-        //noinspection ExpiringTargetSdkVersion,OldTargetApi
-        targetSdkVersion 22
-        versionCode 5
+        targetSdkVersion 28
+        versionCode 6
         versionName "1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
