@@ -35,6 +35,9 @@ class DeveloperSettings(val context: Context) {
     fun setSystemProp(property: String, value: String, kickNeeded: Boolean = false) {
         try {
             SystemProperties.set(property, value)
+            if (kickNeeded) {
+                kickSystemService() // Settings app magic
+            }
         } catch (e: RuntimeException) {
             if (sharedPrefs.magicGranted) {
                 doAsync {
