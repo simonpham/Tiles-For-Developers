@@ -12,16 +12,17 @@ Use **DevTiles** instead of wasting your time opening **Settings** -> Find a way
 ### System Requirements: Android 7.0+, root (optional)
 ### Current supported quick settings tiles:
 * ADB over network
-* Animator duration scale
+* **Animator duration scale**
 * Caffeine
 * Debug GPU overdraw
-* Demo mode (root required)
+* **Demo mode**
 * Force RTL layout direction
 * Profile GPU rendering
 * Show layout bounds
-* Show taps (root required)
+* **Show taps**
 * Strict mode
-* USB Debugging
+* **USB Debugging**
+NOTE: **Bold tiles** require "magic" permissions, others may require root if needed
 
 ### Downloads:
 <a href='https://play.google.com/store/apps/details?id=com.github.simonpham.devtiles'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="50px"/></a>
