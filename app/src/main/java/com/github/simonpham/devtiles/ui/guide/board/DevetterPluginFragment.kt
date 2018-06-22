@@ -28,9 +28,7 @@ class DevetterPluginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (isDevetterInstalled()) {
-            gotDevetter()
-        }
+        checkDevetter()
 
         val listener = (activity as? View.OnClickListener)
                 ?: (parentFragment as? View.OnClickListener)
@@ -38,6 +36,17 @@ class DevetterPluginFragment : Fragment() {
 
         btnInstall.setOnClickListener {
             openPlayStore(it.context, DEVETTER_PACKAGE_NAME)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkDevetter()
+    }
+
+    private fun checkDevetter() {
+        if (isDevetterInstalled()) {
+            gotDevetter()
         }
     }
 
