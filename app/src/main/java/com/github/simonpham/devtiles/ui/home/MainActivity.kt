@@ -56,6 +56,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        refresh()
+    }
+
     private fun refresh() {
         swiperefresh.isRefreshing = true
         doAsync {
