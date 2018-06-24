@@ -22,6 +22,7 @@ Use **DevTiles** instead of wasting your time opening **Settings** -> Find a way
 * **Show taps**
 * Strict mode
 * **USB Debugging**
+
 NOTE: **Bold tiles** require "magic" permissions, others may require root if needed
 
 ### Downloads:
