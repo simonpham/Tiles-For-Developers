@@ -62,13 +62,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun refresh() {
-        swiperefresh.isRefreshing = true
-        doAsync {
-            devSettings.checkCompatibility()
-            val data = makeAdapterData()
-            uiThread {
-                adapter.setData(data)
-                swiperefresh.isRefreshing = false
+        catchAll {
+            swiperefresh.isRefreshing = true
+            doAsync {
+                devSettings.checkCompatibility()
+                val data = makeAdapterData()
+                uiThread {
+                    adapter.setData(data)
+                    swiperefresh.isRefreshing = false
+                }
             }
         }
     }
