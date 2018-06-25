@@ -21,6 +21,16 @@ import com.github.simonpham.devtiles.ui.guide.PagerActivity
  * Email: simonpham.dn@gmail.com
  */
 
+inline fun <T> catchAll(action: () -> T): T? {
+    try {
+        return action()
+    } catch (ignore: Throwable) {
+        // do nothing
+    }
+    return null
+}
+
+
 fun isDevetterInstalled(): Boolean {
     val pm = SingletonInstances.getPackageManager()
     var installed: Boolean
