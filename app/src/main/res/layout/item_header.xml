@@ -13,7 +13,7 @@
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginEnd="@dimen/margin_normal"
         android:maxLines="1"
-        android:textColor="?attr/colorAccent"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/text_size_body"
         android:textStyle="bold"
         tools:text="Header" />
@@ -30,5 +30,5 @@
         android:layout_marginStart="@dimen/margin_normal"
         android:layout_marginEnd="@dimen/margin_normal"
         android:background="@drawable/ic_help_outline_24dp"
-        android:backgroundTint="?attr/colorAccent" />
+        android:backgroundTint="@color/colorPrimary" />
 </LinearLayout>

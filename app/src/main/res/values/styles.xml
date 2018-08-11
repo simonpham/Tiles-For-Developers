@@ -60,7 +60,8 @@
     </style>
 
     <style name="AppTheme.Text.ActionBarTitle" parent="@style/TextAppearance.AppCompat.Title">
-        <!--<item name="android:textColor">@color/colorAccent</item>-->
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>
