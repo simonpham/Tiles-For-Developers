@@ -1,9 +1,10 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -49,6 +50,11 @@
 
     <style name="AppTheme.Text.Summary" parent="AppTheme.Text">
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="AppTheme.Text.ActionBarTitle" parent="@style/TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>
