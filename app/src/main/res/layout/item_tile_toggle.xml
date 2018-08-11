@@ -43,6 +43,7 @@
         android:layout_marginStart="@dimen/margin_small"
         android:ellipsize="end"
         android:maxLines="2"
+        android:minLines="2"
         android:textAppearance="?android:textAppearanceListItemSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/swEnable"

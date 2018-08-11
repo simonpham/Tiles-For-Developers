@@ -1,10 +1,9 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
         <item name="android:windowBackground">@color/white</item>
     </style>
 
@@ -51,12 +50,6 @@
 
     <style name="AppTheme.Text.Summary" parent="AppTheme.Text">
         <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="AppTheme.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar">
-        <item name="background">@color/transparent</item>
-        <item name="titleTextStyle">@style/AppTheme.Text.ActionBarTitle</item>
-        <item name="elevation">0dp</item>
     </style>
 
     <style name="AppTheme.Text.ActionBarTitle" parent="@style/TextAppearance.AppCompat.Title">
