@@ -10,8 +10,8 @@
         android:id="@+id/tvHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
         android:maxLines="1"
         android:textColor="?attr/colorAccent"
         android:textSize="@dimen/text_size_body"
@@ -27,8 +27,8 @@
         android:id="@+id/btnHelp"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginEnd="@dimen/margin_normal"
         android:background="@drawable/ic_help_outline_24dp"
         android:backgroundTint="?attr/colorAccent" />
 </LinearLayout>
