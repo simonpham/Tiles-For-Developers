@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.github.simonpham.devtiles.BuildConfig
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.SingletonInstances
@@ -20,6 +21,7 @@ import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
 
+    private val context = SingletonInstances.getAppContext()
     private val sharedPrefs = SingletonInstances.getSharedPrefs()
     private val devSettings = SingletonInstances.getDevSettings()
 
@@ -31,14 +33,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
 
-        val sharedPrefs = SingletonInstances.getSharedPrefs()
-        if (sharedPrefs.isFirstLaunch
-                || sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
-            sharedPrefs.isFirstLaunch = false
-            showPermissionWizard(this)
-        }
+        showPermissionWizard()
 
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
@@ -46,33 +44,28 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         refresh()
 
-        if (sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
-            viewChangelog(this)
-            sharedPrefs.lastKnownVersionCode = BuildConfig.VERSION_CODE
-        }
+        showChangeLog()
 
         swiperefresh.setOnRefreshListener {
             refresh()
         }
+
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val scrollOffset = recyclerView.computeVerticalScrollOffset()
+                if (scrollOffset > 0) {
+                    appbar.elevation = 4F
+                } else {
+                    appbar.elevation = 0F
+                }
+            }
+        })
     }
 
     override fun onResume() {
         super.onResume()
         refresh()
-    }
-
-    private fun refresh() {
-        catchAll {
-            swiperefresh.isRefreshing = true
-            doAsync {
-                devSettings.checkCompatibility()
-                val data = makeAdapterData()
-                uiThread {
-                    adapter.setData(data)
-                    swiperefresh.isRefreshing = false
-                }
-            }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -100,6 +93,35 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun refresh() {
+        catchAll {
+            swiperefresh.isRefreshing = true
+            doAsync {
+                devSettings.checkCompatibility()
+                val data = makeAdapterData()
+                uiThread {
+                    adapter.setData(data)
+                    swiperefresh.isRefreshing = false
+                }
+            }
+        }
+    }
+
+    private fun showPermissionWizard() {
+        if (sharedPrefs.isFirstLaunch
+                || sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
+            sharedPrefs.isFirstLaunch = false
+            showPermissionWizard(context)
+        }
+    }
+
+    private fun showChangeLog() {
+        if (sharedPrefs.lastKnownVersionCode < BuildConfig.VERSION_CODE) {
+            viewChangelog(context)
+            sharedPrefs.lastKnownVersionCode = BuildConfig.VERSION_CODE
         }
     }
 
