@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import com.github.simonpham.devtiles.BuildConfig
 import com.github.simonpham.devtiles.R
 import com.github.simonpham.devtiles.SingletonInstances
@@ -54,6 +55,19 @@ class MainActivity : AppCompatActivity() {
         swiperefresh.setOnRefreshListener {
             refresh()
         }
+
+
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val scrollOffset = recyclerView.computeVerticalScrollOffset()
+                if (scrollOffset > 0) {
+                    appbar.elevation = 4F
+                } else {
+                    appbar.elevation = 0F
+                }
+            }
+        })
     }
 
     override fun onResume() {
